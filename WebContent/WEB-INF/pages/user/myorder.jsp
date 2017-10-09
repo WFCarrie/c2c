@@ -9,10 +9,13 @@
 <html>
 <head>
     <meta charset="UTF-8">
-    <title>个人设置</title>
+    <title>订单信息</title>
     <link rel="stylesheet" href="<%=basePath%>css/font-awesome.min.css" />
+    <link rel="stylesheet" href="<%=basePath%>css/emoji.css" />
     <link rel="stylesheet" href="<%=basePath%>css/userhome.css" />
     <link rel="stylesheet" href="<%=basePath%>css/user.css" />
+    <link rel="stylesheet" href="<%=basePath%>css/order.css"/>
+    <link rel="stylesheet" href="<%=basePath%>css/index.css" />
 
 </head>
 <body>
@@ -40,13 +43,14 @@
                     <img src="<%=basePath%>img/photo.jpg">
                 </div>
                 <div class="big_headimg">
-                    <img src="<%=basePath%>img/findfun.png">
+                    <img src="">
                 </div>
                 <span class="name">${cur_user.username}</span>
                 <span class="school">C2C</span>
                 <span class="name">闲置数量：${cur_user.goodsNum}</span>
+                <span class="fa fa-share-alt">"快去分享一下"</span>
             </div>
-             <div class="home_nav">
+            <div class="home_nav">
                 <ul>
                     <a href="">
                         <li class="notice">
@@ -55,7 +59,7 @@
                             <strong></strong>
                         </li>
                     </a>
-                    <a href="<%=basePath%>collection/scList">
+                   <a href="<%=basePath%>collection/scList">
                         <li class="fri">
                             
                             <span>收藏列表</span>
@@ -105,33 +109,78 @@
             描述：右侧内容区域
         -->
         <div id="user_content">
-            <div class="basic">
-                <form:form action="updateInfo" method="post" commandName="user" role="form">
-                    <h1>完善与修改个人信息</h1><hr />
-                    <div class="changeinfo">
-                        <span>昵称：</span>
-                        <input class="in_info" type="text" name="username" placeholder="请输入昵称" value="${cur_user.username}"/>
-                    </div><hr />
-                    <div class="changeinfo">
-                        <span>开通时间：</span>
-                        <input class="in_info" type="text" name="createAt" value="${cur_user.createAt}" readonly="true"/>
-                    </div><hr />
-                    <div class="changeinfo">
-                        <span>手机号码：</span>
-                        <input class="in_info" type="text" name="phone" value="${cur_user.phone}" readonly="true"/>
-                        <span id="checkphone">已验证</span>
-                    </div><hr />
-                    <div class="changeinfo">
-                        <span>QQ：</span>
-                        <input class="in_info" type="text" name="qq" placeholder="请输入QQ" value="${cur_user.qq}"/>
-                    </div>
-                    <input type="submit" class="setting-save" value="保存修改信息" />
-                </form:form>
+           <div class="">
+	<div class="check-out" style="position: absolute;">
+                <!--
+                    作者：hlk_1135@outlook.com
+                    时间：2017-05-11
+                    描述：闲置商品展示
+                -->
+               <!--  <div class="share_content"> -->
+                
+		<!--<h1>Checkout</h1>-->
+		<h2 style="margin-left: 100px;">确认订单信息</h2>
+    	    <table style="margin-top: 5px;margin-left: 100px;width: 700px;" frame=hsides>
+		  <tr>
+			<th>${ordersExtend.goodsName}名称</th>
+			<th style="width: 100px;">单价</th>
+			<th style="width: 100px;">数量</th>		
+			
+			<th style="width: 100px;">实付款</th>
+			<th>总计</th>
+		  </tr>
+		  <tr>
+			<td class="ring-in"><a href="single.html" class="at-in">
+			<img src="<%=basePath%>upload/${ordersExtend.image}" alt=""></a>
+			
+			<div class="clearfix"> </div>
+			</td>
+			<td>${ordersExtend.goodsPrice }3200</td>
+			<td class="check">
+			2
+			<!-- <input type="text" value="1" onfocus="this.value='';" onblur="if (this.value == '') {this.value ='';}"> -->
+			</td>		
+			<td>${ordersExtend.goodsPrice }3200</td>
+			
+			<td>${ordersExtend.goodsPrice }</td>
+			
+		  </tr>
+		  
+	</table>
+                    <%-- <c:if test="${empty collection}">
+                        <div class="no_share">
+                            <span>没有任何内容，去逛逛其它的吧！</span>
+                        </div>
+                    </c:if> --%>
+                   <%-- <c:if test="${!empty collection}">
+                        <c:forEach var="items" items="${collection}">
+                            <div class="story">
+                                <a href="<%=basePath%>goods/goodsId/${items.goodsid}" class="head_img">
+                                    <img src="../upload/${ordersExtend.image}">
+                                </a>
+                                <span class="name">${ordersExtend.goodsName}</span>
+                                <span class="text" style="overflow: hidden; outline: none;">${items.goods_describle}</span>
+                                <div class="box">
+                                    <div class="box_content">
+                                        <div class="left_shadow"></div>
+                                        <div class="left" index="1" style="display: none;"></div>
+                                        <div class="right_shadow"></div>
+                                        <div class="left" index="3" style="display: none;"></div>
+                                        <img src="../upload/${ordersExtend.image}" index="2">
+                                        <span class="com" style="display: none;left: 396.733px;"></span>
+                                    </div>
+                                    <div>
+                                    	${ordersExtend.goodsPrice }
+                                    	2
+                                    </div>
+                                </div>
+                            </div>
+                        </c:forEach>
+                    </c:if> --%>
+                </div>
             </div>
-            <!--
-                描述：最右侧，可能认识的人
-            -->
-            <div class="recommend">
+          
+            <div class="recommend" style="float: right;">
                 <div class="title">
                     <span class="text">可能认识的人</span>
                     <span class="change">换一组</span>

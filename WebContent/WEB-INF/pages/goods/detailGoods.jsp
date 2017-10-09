@@ -7,6 +7,10 @@
 %>
 <!DOCTYPE html>
 <html>
+<style type="text/css">
+div.inset {border-style: inset;
+width:700px}
+</style>
 <head>
     <meta charset="utf-8" />
     <title>C2C</title>
@@ -45,7 +49,12 @@
                 $("#changeName").css("display","none");
             }
         }
-    </script>
+         $(function(){
+        	 $(".inset").hide(); //默认隐藏
+    		
+    	})
+      
+            </script>
 <body ng-view="ng-view">
 <!--
     作者：hlk_1135@outlook.com
@@ -320,20 +329,37 @@
             <h1 class="title">评论</h1>
             <hr class="hr1" />
             <hr class="hr2" />
-            <c:forEach var="items" items="${commentsAndUserName}">
+            <c:forEach var="items" items="${commentsAndUserName}" varStatus="idxStatus">
+            <input id="com${idxStatus.index}" type="hidden" value="${items.comments.id}"/>
             <div class="comment-collection">
                 <div class="comment-item ng-scope">
                     <div class="comment-main-content">
                         <em class="name ng-binding">${items.name}:</em>
-                        <em class=ng-binding>${items.comments.content}</em>
+                        <em class=ng-binding>${items.comments.content} </em>
                         <em class="name ng-binding  ng-hide">@:</em>
                         <em class="ng-binding"></em>
                     </div>
                     <div class="comment-function">
                         <em class="time ng-biinding">${items.comments.createAt}</em>
-                        <a class="reply-or-delete">删除</a>
-                        <a class="reply-or-delete">回复</a>
+                        <a class="reply-or-delete"   onclick="zk(${idxStatus.index})" >回复</a>
+                     <div  id = "hide${idxStatus.index}" class ="inset" style="left:200px; position:relative"> 
+                   
+                   
+                    <div id="replysList">
+                    	
+                    </div>   
+                 <div class="comment-add row">
+                <div class="input-field col s12">
+                    <input id="replybox" type="text" name="reply" class="validate ng-pristine ng-untouched ng-valid ng-empty"/>
+                    <label for="replybox" style="right:-250px ">这里写下回复</label>
+                   <button type="submit" class="waves-effect wave-light btn comment-submit" style="right:-200px " onclick="reply()">
+                                                                      发表</button>
+                    
+                </div>
+                </div>
+            </div>
                     </div>
+                    
                 </div>
             </div>
             </c:forEach>
@@ -354,7 +380,7 @@
             </div>
         </div>
     </div>
-    
+    <input type="hidden" value="" id="temp"/>
 </div>
 <script type="text/javascript">
 		function comments() {
@@ -374,6 +400,46 @@
 					window.location.reload(); 
 				}else{
 					alert("评论失败！");
+				}
+			});
+
+		}
+		function zk(index){
+			
+			 var comid=$('#com'+index+'').val();
+		      $('#hide'+index+'').toggle();//显示隐藏切换
+		      $("#temp").val(comid);
+		      $.post("<%=basePath%>reply/update", {
+					"commentId" : comid
+				}, function(result) {
+					for (var i = 0; i < result.replyList.length; i++) {
+						var node = "<em class='name ng-binding'>"+replyList[i].id+"</em>"
+									+"<em class='ng-binding'>"+replyList[i].content+"</em><br/>"
+									+"<em class='time ng-biinding'>"+replyList[i].creatAt+"</em>"
+									+"</div>";
+						node = $(node);
+						$("#replysList").append(node);
+					}
+				});
+		}
+		function reply() {
+			
+			var replyContent = $("#replybox").val().trim();
+			var commentId =$("#temp").val();
+		
+			if (replyContent=="") {
+				alert("请输入回复内容！");
+				return;
+			}
+			$.post("<%=basePath%>reply/up", {
+				"replyContent" : replyContent,
+				"commentId" : commentId
+			}, function(result) {
+				if(result){
+					alert("回复成功！");
+					window.location.reload(); 
+				}else{
+					alert("回复失败！");
 				}
 			});
 
