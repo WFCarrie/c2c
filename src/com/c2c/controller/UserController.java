@@ -1,21 +1,29 @@
 package com.c2c.controller;
 
+import com.c2c.pojo.Address;
 import com.c2c.pojo.Goods;
 import com.c2c.pojo.GoodsExtend;
 import com.c2c.pojo.User;
+import com.c2c.service.AddressService;
 import com.c2c.service.GoodsService;
 import com.c2c.service.ImageService;
 import com.c2c.util.DateUtil;
 import com.c2c.util.MD5;
+
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.*;
+
 import com.c2c.pojo.Image;
 import com.c2c.service.UserService;
+
 import org.springframework.web.servlet.ModelAndView;
+
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -30,6 +38,8 @@ public class UserController {
     private GoodsService goodsService;
     @Resource
     private ImageService imageService;
+    @Autowired
+    private AddressService addressService;
 
     /**
      * 用户注册
@@ -129,6 +139,25 @@ public class UserController {
     @RequestMapping(value = "/home")
     public String home() {
         return "/user/home";
+    }
+    /*
+     * 个人地址
+     */
+    @RequestMapping(value = "/address")
+    public ModelAndView address(HttpServletRequest request,Address address,User user) {
+    	User cur_user = (User)request.getSession().getAttribute("cur_user");
+    	List<Address> addressList =addressService.selectAddressByUserId(cur_user.getId());
+    	ModelAndView mv=new ModelAndView();
+    	mv.addObject("addressList",addressList);
+    	mv.setViewName("/user/address");
+         return mv;
+    }
+    /*
+     * 个人订单
+     */
+    @RequestMapping(value = "/myorder")
+    public String myorder() {
+        return "/user/myorder";
     }
 
     /**

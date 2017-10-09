@@ -9,11 +9,13 @@
 <html>
 <head>
     <meta charset="UTF-8">
-    <title>个人设置</title>
+    <title>地址信息</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="<%=basePath%>css/font-awesome.min.css" />
     <link rel="stylesheet" href="<%=basePath%>css/userhome.css" />
     <link rel="stylesheet" href="<%=basePath%>css/user.css" />
-
+	<link href="http://cdn.bootcss.com/bootstrap/3.3.6/css/bootstrap.css" rel="stylesheet">
+	<link href="<%=basePath%>css/city-picker.css" rel="stylesheet">
 </head>
 <body>
 <div class="pre-2" id="big_img">
@@ -106,31 +108,62 @@
         -->
         <div id="user_content">
             <div class="basic">
-                <form:form action="updateInfo" method="post" commandName="user" role="form">
-                    <h1>完善与修改个人信息</h1><hr />
-                    <div class="changeinfo">
-                        <span>昵称：</span>
-                        <input class="in_info" type="text" name="username" placeholder="请输入昵称" value="${cur_user.username}"/>
-                    </div><hr />
-                    <div class="changeinfo">
-                        <span>开通时间：</span>
-                        <input class="in_info" type="text" name="createAt" value="${cur_user.createAt}" readonly="true"/>
-                    </div><hr />
-                    <div class="changeinfo">
-                        <span>手机号码：</span>
-                        <input class="in_info" type="text" name="phone" value="${cur_user.phone}" readonly="true"/>
-                        <span id="checkphone">已验证</span>
-                    </div><hr />
-                    <div class="changeinfo">
-                        <span>QQ：</span>
-                        <input class="in_info" type="text" name="qq" placeholder="请输入QQ" value="${cur_user.qq}"/>
-                    </div>
-                    <input type="submit" class="setting-save" value="保存修改信息" />
-                </form:form>
+            <h2 class="page-header">新增地址</h2>
+			<div class="docs-methods">
+				<form class="form-inline" action="<%=basePath%>address/add" method="post">
+					<div id="distpicker">
+						<div style="float: left;font-size: 15px;">所&nbsp;在&nbsp;地&nbsp;区：</div>
+						<div class="form-group">
+							<div style="position: relative;">
+								<input id="city-picker3" class="form-control" readonly="readonly"  type="text" name="address1" value="请选择" data-toggle="city-picker"/>
+							</div>
+						</div>
+					</div>
+					<div class="adr">
+				<div class="adr1">详&nbsp;细&nbsp;地&nbsp;址：</div>
+				<textarea rows="2" cols="40" name="address2">
+				</textarea>
+					</div>
+					<div class="aname">
+						收货人姓名：<input type="text" name="buyerName"/>
+					</div>
+					<div class="phone">
+						电&nbsp;话&nbsp;号&nbsp;码：<input type="text" name="buyerPhone"/>
+					</div>
+					<div class="baocun">
+						<input type="submit" value="保存" />
+					</div>
+					
+				</form>
+			</div>
+			
+			<!-- 地址列表 -->
+            <div class="adList">
+            	<h5>已保存地址</h5>
+            	<table>
+            		<tr>
+            			<th style="width: 90px;">收货人</th>
+            			<th style="width:350px">详细地址</th>
+            			<th>电话号码</th>
+            			<th>操作</th>
+            		</tr>
+            		<c:forEach var="items" items="${addressList}" >
+            		<tr>
+            			<td>${items.buyerName}</td>
+            			<td>${items.addressContent }</td>
+            			<td>${items.buyerPhone}</td>
+            			<td>
+<!--             				<button type="button">修改</button> -->
+            				<button type="button" onclick="deletes(${items.id})">删除</button>
+            			</td>
+            		</tr>
+            		</c:forEach>
+            	</table>
             </div>
-            <!--
-                描述：最右侧，可能认识的人
-            -->
+            </div>
+            
+            
+            <!--描述：最右侧，可能认识的人-->
             <div class="recommend">
                 <div class="title">
                     <span class="text">可能认识的人</span>
@@ -178,5 +211,24 @@
         </div>
     </div>
 </div>
+	<script src="<%=basePath%>js/jquery.js"></script>
+		<script src="<%=basePath%>js/bootstrap.js"></script>
+	<script src="<%=basePath%>js/city-picker.data.js"></script>
+		<script src="<%=basePath%>js/city-picker.js"></script>
+	<script src="<%=basePath%>js/main.js"></script>
+	<script type="text/javascript">
+	function deletes(addressId){
+		$.post("<%=basePath%>address/deleted", {
+			"addressId" : addressId
+		}, function(result) {
+			if(result){
+				alert("删除成功！");
+				window.location.reload(); 
+			}else{
+				alert("删除失败！");
+			}
+		});
+	}
+	</script>
 </body>
 </html>
