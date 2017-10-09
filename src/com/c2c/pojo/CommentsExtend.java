@@ -1,7 +1,5 @@
 package com.c2c.pojo;
 
-import java.util.ArrayList;
-import java.util.List;
 
 public class CommentsExtend {
 	private Comments comments ;
