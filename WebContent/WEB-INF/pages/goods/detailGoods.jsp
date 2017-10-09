@@ -339,24 +339,25 @@ width:700px}
                         <em class="name ng-binding  ng-hide">@:</em>
                         <em class="ng-binding"></em>
                     </div>
-                    <div class="comment-function">
+                    <div class="comment-main-content">
                         <em class="time ng-biinding">${items.comments.createAt}</em>
                         <a class="reply-or-delete"   onclick="zk(${idxStatus.index})" >回复</a>
-                     <div  id = "hide${idxStatus.index}" class ="inset" style="left:200px; position:relative"> 
-                   
-                   
-                    <div id="replysList">
+                     <div  id = "hide${idxStatus.index}" class ="inset" style="left:200px; position:relative;left: 200px;position: relative;display: block;border-top-width: 1px;border-left-width: 1px;border-bottom-width: 1px;border-right-width: 1px;"> 
+                     
+                    <div class ="comment-function" id="replysList">
                     	
                     </div>   
-                 <div class="comment-add row">
-                <div class="input-field col s12">
-                    <input id="replybox" type="text" name="reply" class="validate ng-pristine ng-untouched ng-valid ng-empty"/>
-                    <label for="replybox" style="right:-250px ">这里写下回复</label>
-                   <button type="submit" class="waves-effect wave-light btn comment-submit" style="right:-200px " onclick="reply()">
-                                                                      发表</button>
-                    
-                </div>
-                </div>
+                 <div class="comment-add row" style="padding-bottom: 0px;margin-bottom: 1px;">
+										<div class="input-field col s12"
+											style="padding-right: 0px; width: 395.5px;">
+											<input id="replybox" type="text" name="reply"
+												class="validate ng-pristine ng-untouched ng-valid ng-empty" />
+											<label for="replybox" style="right: -250px">这里写下回复</label>
+											<button type="submit"
+												class="waves-effect wave-light btn comment-submit"
+												onclick="reply()">发表</button>
+										</div>
+									</div>
             </div>
                     </div>
                     
@@ -364,7 +365,7 @@ width:700px}
             </div>
             </c:forEach>
             <div class="comment-add row">
-                <div class="input-field col s12">
+                <div class="input-field col s12" >
                     <i class="iconfont prefix"></i>
                     <input id="commentbox" type="text" name="content" class="validate ng-pristine ng-untouched ng-valid ng-empty"/>
                     <label for="commentbox">这里写下评论</label>
@@ -412,14 +413,19 @@ width:700px}
 		      $.post("<%=basePath%>reply/update", {
 					"commentId" : comid
 				}, function(result) {
-					for (var i = 0; i < result.replyList.length; i++) {
-						var node = "<em class='name ng-binding'>"+replyList[i].id+"</em>"
-									+"<em class='ng-binding'>"+replyList[i].content+"</em><br/>"
-									+"<em class='time ng-biinding'>"+replyList[i].creatAt+"</em>"
-									+"</div>";
-						node = $(node);
-						$("#replysList").append(node);
+					if(result.replyList.length>0){
+						for (var i = 0; i < result.replyList.length; i++) {
+							var node = "<div>"
+										+"<em class='name ng-binding'>"+result.replyList[i].id+":</em>"
+										+"<em class='ng-binding'>"+result.replyList[i].content+"</em><br>"
+										+"<em class='time ng-biinding'>"+result.replyList[i].createAt+"</em>"
+										+"<hr/></div>";
+							$("#replysList").append(node);
+						}
+					}else{
+						$("#replysList").html("<p>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp暂无回复！</p>");
 					}
+					
 				});
 		}
 		function reply() {
