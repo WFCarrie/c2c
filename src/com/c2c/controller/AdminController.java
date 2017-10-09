@@ -1,8 +1,10 @@
 package com.c2c.controller;
 
+import com.c2c.pojo.Goods;
 import com.c2c.pojo.User;
 import com.c2c.util.JsonUtil;
 import com.c2c.util.UserGrid;
+import com.c2c.service.GoodsService;
 import com.c2c.service.UserService;
 
 import org.apache.commons.io.IOUtils;
@@ -29,6 +31,10 @@ public class AdminController {
 
 	@Resource
 	private UserService userService;
+
+	@Resource
+	private GoodsService goodsService;
+
 	
 	@RequestMapping(value = "/adminIndex", method = RequestMethod.GET)
 	public String adminIndex() {
@@ -73,13 +79,17 @@ public class AdminController {
 	}
 
 	/**
-	 * 管理端用户列表
+
+	 * 管理端商品列表
+
 	 * 
 	 * @param request
 	 * @return
 	 * @throws IOException
 	 */
-	@RequestMapping(value = "/getUserLists")
+
+	@RequestMapping(value = "/getGoodsLists")
+
 	public void getUserLists(HttpServletRequest request,
 			HttpServletResponse response) throws IOException {
 		Map<String, Object> result = new HashMap<String, Object>();
@@ -87,31 +97,37 @@ public class AdminController {
 		int currentPage = Integer.parseInt(request.getParameter("currentPage"));
 		int pageSize = Integer.parseInt(request.getParameter("pageSize"));
 		String keyword = request.getParameter("keyword");
-		List<User> list = userService.getUserLists(keyword, currentPage,
+
+		List<Goods> goodslist = goodsService.getGoodsLists(keyword, currentPage,
 				pageSize);
 		int total = userService.getKeywordCount(keyword);
 
-		result.put("rows", list);
+		result.put("rows", goodslist);
+
 		result.put("total", total);
 		JsonUtil.writeJSON(result, response);
 	}
 
 	/**
-	 * 管理端商品管理
+
+	 * 管理端用户管理
 	 * 
 	 * @param request
-	 * @param response
+	 * @param responsegetGoodsLists
 	 * @throws IOException
 	 */
-	@RequestMapping(value = "/getGoodsLists")
+	@RequestMapping(value = "/getUserLists")
+
 	public void getGoodsLists(HttpServletRequest request, HttpServletResponse response) throws IOException {
 		
 		Map<String, Object> result = new HashMap<String, Object>();
 		int currentPage = Integer.parseInt(request.getParameter("currentPage"));
 		int pageSize = Integer.parseInt(request.getParameter("pageSize"));
 		String keyword = request.getParameter("keyword");
-		List<User> list = userService.getUserLists(keyword, currentPage,
-				pageSize);
+
+		List<User> list = userService.getUserLists(keyword, currentPage, pageSize);
+
+
 		int total = userService.getKeywordCount(keyword);
 
 		result.put("rows", list);
