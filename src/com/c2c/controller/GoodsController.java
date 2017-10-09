@@ -61,8 +61,9 @@ public class GoodsController {
         //商品种类数量
         int catelogSize = 7;
         //每个种类显示商品数量
+        	
         int goodsSize = 6;
-        for (int i = 1; i <= catelogSize; i++) {
+        for (int i = 1; i <= catelogSize; i++) {		//每种商品进行循环
             List<Goods> goodsList = null;
             List<GoodsExtend> goodsAndImage = null;
             goodsList = goodsService.getGoodsByCatelogOrderByDate(i, goodsSize);
