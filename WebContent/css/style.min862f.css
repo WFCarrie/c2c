@@ -36,7 +36,7 @@ a:focus {
 }
 
 .nav>li>a {
-	color: #a7b1c2;
+	color: white;
 	font-weight: 600;
 	padding: 14px 20px 14px 25px
 }
@@ -54,7 +54,7 @@ a:focus {
 }
 
 .navbar-default .nav>li>a:focus, .navbar-default .nav>li>a:hover {
-	background-color: #293846;
+	background-color: #127de0e6;
 	color: #fff
 }
 
@@ -180,12 +180,13 @@ body.body-small .navbar-top-links li:last-child {
 
 .nav-header {
 	padding: 33px 25px;
-	background: url(patterns/header-profile.png) no-repeat
+	/* background: url(patterns/header-profile.png) no-repeat */
+	background-color: #3a8cdde6;
 }
 
 .nav>li.active {
-	border-left: 4px solid #19aa8d;
-	background: #293846
+	border-left: 4px solid #3A8CDD;
+	background: #3A8CDD
 }
 
 .nav.nav-second-level>li.active {
@@ -201,7 +202,7 @@ body.body-small .navbar-top-links li:last-child {
 }
 
 .nav-header .text-muted {
-	color: #8095a8
+	color: white;
 }
 
 .minimalize-styl-2 {
@@ -293,7 +294,8 @@ body.mini-navbar .navbar-default .nav>li>.nav-second-level li a {
 }
 
 .slimScrollDiv>* {
-	overflow: hidden
+	overflow: hidden;
+	background-color: #3a8cdde6;
 }
 
 .mini-navbar .nav-second-level li a {
@@ -6581,8 +6583,8 @@ body.rtls .top-navigation #page-wrapper, body.rtls .top-navigation .footer.fixed
 }
 
 .page-tabs a.active {
-	background: #2f4050;
-	color: #a7b1c2
+	background: #3a8cdde6;
+	color: white;
 }
 
 .page-tabs a.active i:hover, .page-tabs a.active:hover {
