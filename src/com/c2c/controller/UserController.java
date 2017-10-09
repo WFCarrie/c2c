@@ -1,8 +1,10 @@
 package com.c2c.controller;
 
+import com.c2c.pojo.Address;
 import com.c2c.pojo.Goods;
 import com.c2c.pojo.GoodsExtend;
 import com.c2c.pojo.User;
+import com.c2c.service.AddressService;
 import com.c2c.service.GoodsService;
 import com.c2c.service.ImageService;
 import com.c2c.util.DateUtil;
@@ -28,6 +30,7 @@ import java.util.List;
 @Controller
 @RequestMapping(value = "/user")
 public class UserController {
+
 
 	@Resource
 	private UserService userService;
@@ -201,4 +204,5 @@ public class UserController {
 		mv.setViewName("/user/goods");
 		return mv;
 	}
+
 }
