@@ -362,7 +362,7 @@ body.mini-navbar .navbar-default .nav>li>.nav-second-level li a {
 }
 
 .navbar-fixed-top, .navbar-static-top {
-	background: #f3f3f4
+	background: whi;
 }
 
 .fixed-nav #wrapper {
@@ -3677,7 +3677,7 @@ table.table-mail tr td {
 }
 
 .gray-bg {
-	background-color: #f3f3f4
+	background-color: white;
 }
 
 .white-bg {
@@ -3841,8 +3841,8 @@ table.table-mail tr td {
 }
 
 .simple_tag {
-	background-color: #f3f3f4;
-	border: 1px solid #e7eaec;
+	background-color: white;
+	border: 1px solid white;
 	border-radius: 2px;
 	color: inherit;
 	font-size: 10px;
@@ -6571,11 +6571,11 @@ body.rtls .top-navigation #page-wrapper, body.rtls .top-navigation .footer.fixed
 }
 
 .content-tabs {
-	border-bottom: solid 2px #2f4050
+	border-bottom: solid 2px #4D97E0
 }
 
 .page-tabs a {
-	color: #999
+	color: white;
 }
 
 .page-tabs a i {
@@ -6583,7 +6583,7 @@ body.rtls .top-navigation #page-wrapper, body.rtls .top-navigation .footer.fixed
 }
 
 .page-tabs a.active {
-	background: #3a8cdde6;
+	background: #4d97e0;
 	color: white;
 }
 
@@ -6931,7 +6931,8 @@ body.skin-3 {
 }
 
 .navbar-static-side {
-	background: #2f4050
+	background: #4d97e0
+	
 }
 
 .nav-close {
