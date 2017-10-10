@@ -31,6 +31,7 @@ public class GoodsServiceImpl implements GoodsService {
         goods.setPolishTime(polishTime);
         goods.setEndTime(endTime);
         goods.setStartTime(startTime);
+        goods.setGood_status(0);
         return goodsMapper.insert(goods);
     }
 
@@ -79,6 +80,25 @@ public class GoodsServiceImpl implements GoodsService {
 			int pageSize) {
 		 List<Goods> goodsList = goodsMapper.AllGoddsList(keyword,currentPage,pageSize);
 		return goodsList;
+	}
+
+	@Override
+	public int getKeywordCount(String keyword) {
+		int i =goodsMapper.AllGoddsListCount(keyword);
+		return i;
+	}
+
+	@Override
+	public List<Goods> GoodsListsSh(String keyword, int currentPage,
+			int pageSize) {
+		 List<Goods> goodsList = goodsMapper.AllGoddsListSh(keyword,currentPage,pageSize);
+		return goodsList;
+	}
+
+	@Override
+	public int getKeywordCountSh(String keyword) {
+		int i =goodsMapper.AllGoddsListCountSh(keyword);
+		return i;
 	}
 
 }
