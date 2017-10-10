@@ -89,7 +89,7 @@
                     </a>
                     <a href="<%=basePath%>user/myorder">
                     <li class="myorder">
-                            <span>我的订单</span>
+                            <span>我已购买</span>
                             <strong></strong>
                     </li>
                     </a>
@@ -116,114 +116,46 @@
                     时间：2017-05-11
                     描述：闲置商品展示
                 -->
-               <!--  <div class="share_content"> -->
-                
-		<!--<h1>Checkout</h1>-->
-		<h2 style="margin-left: 100px;">确认订单信息</h2>
-    	    <table style="margin-top: 5px;margin-left: 100px;width: 700px;" frame=hsides>
-		  <tr>
-			<th>${ordersExtend.goodsName}名称</th>
-			<th style="width: 100px;">单价</th>
-			<th style="width: 100px;">数量</th>		
-			
-			<th style="width: 100px;">实付款</th>
-			<th>总计</th>
-		  </tr>
-		  <tr>
-			<td class="ring-in"><a href="single.html" class="at-in">
-			<img src="<%=basePath%>upload/${ordersExtend.image}" alt=""></a>
-			
-			<div class="clearfix"> </div>
-			</td>
-			<td>${ordersExtend.goodsPrice }3200</td>
-			<td class="check">
-			2
-			<!-- <input type="text" value="1" onfocus="this.value='';" onblur="if (this.value == '') {this.value ='';}"> -->
-			</td>		
-			<td>${ordersExtend.goodsPrice }3200</td>
-			
-			<td>${ordersExtend.goodsPrice }</td>
-			
+            <div class="ding">
+		<h2 style="margin-left: 50px;">我已购买的商品的信息</h2>
+    	    <table style="margin-top: 10px;margin-left: 50px;width: 900px;">
+		  <tr style="background-color: #d3eefc;">
+		   	<th ></th>
+			<th style="width: 120px">名称</th>
+			<th style="width: 300px">卖家描述</th>
+			<th style="width: 70px">价格</th>
+			<th style="width: 70px">数量</th>		
+			<th style="width: 120px">收货人电话</th>
+			<th style="width: 100px">收货人</th>
+			<th style="width: 420px">收货地址</th>
+			<th style="width: 170px">状态</th>
 		  </tr>
 		  
+		  <c:forEach var="items" items="${orderList}">
+		  <tr>
+			<td class="ring-in"><a href="single.html" class="at-in">
+			<img src="<%=basePath%>upload/${items.image[0].imgUrl}" alt=""></a>
+			
+			</td>
+			<td>${items.goods[0].name}</td>
+			<td>${items.goods[0].describle}</td>
+			<td>${items.price}</td>
+			<td>&nbsp;1</td>
+			<td>${items.address[0].buyerPhone}</td>
+			<td>${items.address[0].buyerName}</td>
+			<td>${items.address[0].addressContent}</td>
+			
+			<td>正在发货....</td>
+		  </tr>
+		 
+		  </c:forEach>
+		  
 	</table>
-                    <%-- <c:if test="${empty collection}">
-                        <div class="no_share">
-                            <span>没有任何内容，去逛逛其它的吧！</span>
-                        </div>
-                    </c:if> --%>
-                   <%-- <c:if test="${!empty collection}">
-                        <c:forEach var="items" items="${collection}">
-                            <div class="story">
-                                <a href="<%=basePath%>goods/goodsId/${items.goodsid}" class="head_img">
-                                    <img src="../upload/${ordersExtend.image}">
-                                </a>
-                                <span class="name">${ordersExtend.goodsName}</span>
-                                <span class="text" style="overflow: hidden; outline: none;">${items.goods_describle}</span>
-                                <div class="box">
-                                    <div class="box_content">
-                                        <div class="left_shadow"></div>
-                                        <div class="left" index="1" style="display: none;"></div>
-                                        <div class="right_shadow"></div>
-                                        <div class="left" index="3" style="display: none;"></div>
-                                        <img src="../upload/${ordersExtend.image}" index="2">
-                                        <span class="com" style="display: none;left: 396.733px;"></span>
-                                    </div>
-                                    <div>
-                                    	${ordersExtend.goodsPrice }
-                                    	2
-                                    </div>
-                                </div>
-                            </div>
-                        </c:forEach>
-                    </c:if> --%>
+	</div>
                 </div>
             </div>
           
-            <div class="recommend" style="float: right;">
-                <div class="title">
-                    <span class="text">可能认识的人</span>
-                    <span class="change">换一组</span>
-                    <span class="underline"></span>
-                </div>
-                <ul>
-                    <li>
-                        <a href="" class="head_img">
-                            <img src="<%=basePath%>img/photo1.jpg">
-                        </a>
-                        <span>Brudce</span>
-                        <div class="fa fa-plus-square"></div>
-                    </li>
-                    <li>
-                        <a href="" class="head_img">
-                            <img src="<%=basePath%>img/photo2.jpg">
-                        </a>
-                        <span>Graham</span>
-                        <div class="fa fa-plus-square"></div>
-                    </li>
-                    <li>
-                        <a href="" class="head_img">
-                            <img src="<%=basePath%>img/photo3.jpg">
-                        </a>
-                        <span>策马奔腾hly</span>
-                        <div class="fa fa-plus-square"></div>
-                    </li>
-                    <li>
-                        <a href="" class="head_img">
-                            <img src="<%=basePath%>img/photo4.jpg">
-                        </a>
-                        <span>Danger-XFH</span>
-                        <div class="fa fa-plus-square"></div>
-                    </li>
-                    <li>
-                        <a href="" class="head_img">
-                            <img src="<%=basePath%>img/photo5.jpg">
-                        </a>
-                        <span>Keithw</span>
-                        <div class="fa fa-plus-square"></div>
-                    </li>
-                </ul>
-            </div>
+           
         </div>
     </div>
 </div>
