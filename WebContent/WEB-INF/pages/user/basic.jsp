@@ -30,8 +30,6 @@
             </a>
         </div>
         <!--
-            作者：hlk_1135@outlook.com
-            时间：2017-05-10
             描述：左侧个人中心栏
         -->
         <div id="user_nav">
@@ -100,8 +98,6 @@
             </div>
         </div>
         <!--
-            作者：hlk_1135@outlook.com
-            时间：2017-05-10
             描述：右侧内容区域
         -->
         <div id="user_content">
