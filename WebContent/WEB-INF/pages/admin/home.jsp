@@ -53,7 +53,7 @@
 						<ul class="nav nav-second-level">
 							<li><a class="J_menuItem" href="../admin/userList">用户管理</a></li>
 							<li><a class="J_menuItem" href="../admin/goodsList">商品管理</a></li>
-							<li><a class="J_menuItem" href="index_v3.html">评论管理</a></li>
+							<li><a class="J_menuItem" href="../admin/goodsSh">商品审核</a></li>
 						</ul></li>
 					<li><a class="J_menuItem" href="layouts.html"><i
 							class="fa fa-columns"></i> <span class="nav-label">布局</span></a></li>
