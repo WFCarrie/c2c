@@ -9,9 +9,7 @@
 <html>
 <head>
     <meta charset="utf-8" />
-    <title>c2c</title>
-<%--     <link rel="shortcut icon" href="<%=basePath%>img/favicon.ico"/> --%>
-<%--     <link rel="bookmark" href="<%=basePath%>img/favicon.ico"/> --%>
+    <title>c2c主页</title>
     <link rel="stylesheet" href="../css/index.css" />
     <script type="text/javascript" src="../js/jquery.js" ></script>
     <script type="text/javascript" src="../js/materialize.min.js" ></script>
@@ -271,8 +269,6 @@
 -->
 <div class="main-content">
     <!--
-        作者：hlk_1135@outlook.com
-        时间：2017-05-05
         描述：轮播
     -->
     <div class="slider-wapper">
