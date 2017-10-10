@@ -416,7 +416,7 @@ width:700px}
 					if(result.replyList.length>0){
 						for (var i = 0; i < result.replyList.length; i++) {
 							var node = "<div>"
-										+"<em class='name ng-binding'>"+result.replyList[i].id+":</em>"
+										+"<em class='name ng-binding'>"+result.replyList[i].user[0].username+":</em>"
 										+"<em class='ng-binding'>"+result.replyList[i].content+"</em><br>"
 										+"<em class='time ng-biinding'>"+result.replyList[i].createAt+"</em>"
 										+"<hr/></div>";
