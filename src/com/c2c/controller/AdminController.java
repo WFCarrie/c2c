@@ -50,6 +50,10 @@ public class AdminController {
 	public String userList() {
 		return "/admin/userList";
 	}
+	@RequestMapping(value = "/goodsSh", method = RequestMethod.GET)
+	public String goodsSh() {
+		return "/admin/goodsSh";
+	}
 
 	@RequestMapping(value = "/goodsList", method = RequestMethod.GET)
 	public String goodsList() {
@@ -98,13 +102,41 @@ public class AdminController {
 		int pageSize = Integer.parseInt(request.getParameter("pageSize"));
 		String keyword = request.getParameter("keyword");
 
-		List<Goods> goodslist = goodsService.getGoodsLists(keyword, currentPage,
-				pageSize);
-		int total = userService.getKeywordCount(keyword);
+		List<Goods> goodslist = goodsService.getGoodsLists(keyword, currentPage,pageSize);
+		
+		int total = goodsService.getKeywordCount(keyword);
 
 		result.put("rows", goodslist);
-
 		result.put("total", total);
+		
+		JsonUtil.writeJSON(result, response);
+	}
+	
+	/**
+
+	 * 管理端商品审核
+	 * 
+	 * @param request
+	 * @return
+	 * @throws IOException
+	 */
+
+	@RequestMapping(value = "/GoodsListsSh")
+	public void GoodsListsSh(HttpServletRequest request,
+			HttpServletResponse response) throws IOException {
+		Map<String, Object> result = new HashMap<String, Object>();
+
+		int currentPage = Integer.parseInt(request.getParameter("currentPage"));
+		int pageSize = Integer.parseInt(request.getParameter("pageSize"));
+		String keyword = request.getParameter("keyword");
+
+		List<Goods> goodslist = goodsService.GoodsListsSh(keyword, currentPage,pageSize);
+		
+		int total = goodsService.getKeywordCountSh(keyword);
+
+		result.put("rows", goodslist);
+		result.put("total", total);
+		
 		JsonUtil.writeJSON(result, response);
 	}
 

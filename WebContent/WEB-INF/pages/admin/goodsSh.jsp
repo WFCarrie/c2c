@@ -36,13 +36,13 @@
 <body class="gray-bg">
 	<div class="wrapper wrapper-content animated fadeInRight">
 		<div class="col-sm-12">
-			<a class="btn btn-primary" href="<%=basePath%>admin/exportUser"
-				style="text-decoration: none; margin-top: 10px;">导出数据为excel</a>
+<%-- 			<a class="btn btn-primary" href="<%=basePath%>admin/exportUser" --%>
+<!-- 				style="text-decoration: none; margin-top: 10px;">导出数据为excel</a> -->
 			<div class="example-wrap">
 				<h4 class="example-title"
-					style="margin-top: 15px; margin-bottom: -28px;">c2c商品信息</h4>
+					style="margin-top: 15px; margin-bottom: -28px;">c2c商品信息审核</h4>
 				<div class="example">
-					<table id="userListTable">
+					<table id="goodsShListTable">
 					</table>
 				</div>
 			</div>
@@ -53,10 +53,10 @@
 		$(document)
 				.ready(
 						function() {
-							$("#userListTable")
+							$("#goodsShListTable")
 									.bootstrapTable(
 											{
-												url : "../admin/getGoodsLists",
+												url : "../admin/GoodsListsSh",
 												method : "post",
 												contentType : "application/x-www-form-urlencoded",
 												toolbar : '#toolbar', //工具按钮用哪个容器
@@ -157,9 +157,9 @@
 															formatter : function( value, row,index) {
 																return '<button id="'
 																+ row.id
-																+ '"  type="button" class="btn btn-outline btn-default" onClick=enableAccount('
-																+ row.id
-																+ ')>启用</button>';
+																+ '"  type="button" class=" btn btn-info btn-sm" data-toggle="modal" data-target="#myModal" onClick=sh('
+																+ row
+																+ ')>审核</button>';
 
 															}
 
@@ -176,15 +176,96 @@
 			};
 			return temp;
 		}
+		
+		
+		//触发模态框的同时调用此方法  
+		function sh(row) {
+			
+		    //获取表格中的一行数据  
+// 		var xs = $('tbody tr td').eq(1).text();
 
-		// 		function queryParams(params) {
-		// 			var temp = { //这里的键的名字和控制器的变量名必须一直，这边改动，控制器也需要改成一样的
-		// 				pageSize : params.limit, //页面大小
-		// 				currentPage : params.offset, //页码
-		// 				keyword : $("div.pull-right.search > input").val()
-		// 			};
-		// 			return temp;
-		// 		}
+// 		alert($('tr[id="84"]'));
+		
+// 		var xs = $('tbody tr[id="84"] td').eq(1).text();
+		
+// 		alert(xs);
+
+  			
+		    //向模态框中传值  
+// 		    $('#IDS').val(xs);  
+// 		    $('#pass').val(pass);  
+// 		    $('#stuname').val(name);  
+// 		    if (sex == '女') {  
+// 		        document.getElementById('women').checked = true;  
+// 		    } else {  
+// 		        document.getElementById('man').checked = true;  
+// 		    }  
+		    $('#update').modal('show');  
+		}  
+		
+		
 	</script>
+	
+	
+	
+	<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+	<div class="modal-dialog">
+		<div class="modal-content">
+			<div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+					&times;
+				</button>
+				<h4 class="modal-title" id="myModalLabel"> 审核 </h4>
+			</div>
+			
+			<div class="modal-body" style="height: 330px;" >
+			
+				
+			</div>
+			<div class="modal-footer">
+				<button type="button" class="btn btn-default" data-dismiss="modal">关闭
+				</button>
+				<button type="button" class="btn btn-primary">
+					提交更改
+				</button>
+			</div>
+		</div>
+	</div>	
+	
+	<!-- 	模态窗口 		 -->
+	<div class="modal fade stumodal" tabindex="-1" role="dialog"
+		aria-labelledby="mySmallModalLabel">
+		<div class="modal-dialog modal-sm">
+			<div class="modal-content">
+				<div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal"
+						aria-label="Close">
+						<span aria-hidden="true">&times;</span>
+					</button>
+					<h4 class="modal-title">信息修改</h4>
+				</div>
+				<form action="" method="post">
+					<div class="modal-body">
+						<div class="form-group">
+							<label for="userId2">userId</label> <input type="text"
+								name="userId" class="form-control" id="userId2" readonly="true">
+						</div>
+						<div class="form-group">
+							<label for="userName2">userName</label> <input type="text"
+								name="userName" class="form-control" id="userName2"
+								readonly="true">
+						</div>
+						<div class="form-group">
+							<label for="userPower2">userPower</label> <input type="text"
+								name="userPower" class="form-control" id="userPower2">
+						</div>
+					</div>
+					<div class="modal-footer">
+						<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+						<button type="submit" class="btn btn-primary">Save</button>
+					</div>
+				</form>
+			</div>
+		</div>
 </body>
 </html>

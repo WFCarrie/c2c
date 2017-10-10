@@ -98,4 +98,14 @@ public interface GoodsMapper {
      * 
      */
     List<Goods> AllGoddsList(String keyword, int currentPage, int pageSize);
+    
+    int  AllGoddsListCount(String keyword);
+    
+    /*
+     * 后台查询所有商品信息
+     * 
+     */
+    List<Goods> AllGoddsListSh(String keyword, int currentPage, int pageSize);
+    
+    int  AllGoddsListCountSh(String keyword);
 }
