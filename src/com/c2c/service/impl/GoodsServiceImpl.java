@@ -105,4 +105,10 @@ public class GoodsServiceImpl implements GoodsService {
 		return goodsMapper.updateStatusBygoodsId(id);
 	}
 
+	@Override
+	public int updateGoodsStatusBygoodsId(String good_status, int id) {
+		
+		return goodsMapper.updateGoodsStatusBygoodsId(good_status, id);
+	}
+
 }
