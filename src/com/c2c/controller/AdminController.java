@@ -226,7 +226,7 @@ public class AdminController {
 	public String tjshGoods(@RequestParam("good_status") String good_status,@RequestParam("id") int id) {
 		String result = "";
 		
-//		goodsService.
+		goodsService.updateGoodsStatusBygoodsId(good_status,id);
 		int i = 0;
 		if (i > 0) {
 			result = "true";

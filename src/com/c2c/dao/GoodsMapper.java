@@ -113,4 +113,6 @@ public interface GoodsMapper {
     int  updateStatusBygoodsId(int id);
     
     int  AllGoddsListCountSh(String keyword);
+    
+    int updateGoodsStatusBygoodsId(String good_status, int id);
 }

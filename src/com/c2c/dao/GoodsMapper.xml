@@ -312,11 +312,18 @@
   <!-- 通过goodsid 更新 good的status状态为三 -->
    <update id="updateStatusBygoodsId" parameterType="com.c2c.pojo.Goods" >
    update goods
+   
    set good_status = 3
+   
    where id = #{id,jdbcType=INTEGER}
    
    </update>
    
+   <update id="updateGoodsStatusBygoodsId" parameterType="com.c2c.pojo.Goods" >
+   update goods
+   set good_status =#{0}
+   where id = #{1}
+   </update>
    
   <update id="updateByPrimaryKey" parameterType="com.c2c.pojo.Goods" >
     update goods
