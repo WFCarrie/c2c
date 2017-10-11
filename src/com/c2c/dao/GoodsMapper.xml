@@ -157,7 +157,7 @@
   <select id="selectByCatelogOrderByDate" resultMap="ResultMapWithBLOBs">
     select * from goods
     where catelog_id = #{catelogId,jdbcType=INTEGER}
-    and good_status=1
+    and good_status in (1,3)
     order by polish_time DESC
     limit #{limit,jdbcType=INTEGER}
   </select>
@@ -309,6 +309,15 @@
       good_status = #{good_status,jdbcType=INTEGER}
     where id = #{id,jdbcType=INTEGER}
   </update>
+  <!-- 通过goodsid 更新 good的status状态为三 -->
+   <update id="updateStatusBygoodsId" parameterType="com.c2c.pojo.Goods" >
+   update goods
+   set good_status = 3
+   where id = #{id,jdbcType=INTEGER}
+   
+   </update>
+   
+   
   <update id="updateByPrimaryKey" parameterType="com.c2c.pojo.Goods" >
     update goods
     set catelog_id = #{catelogId,jdbcType=INTEGER},

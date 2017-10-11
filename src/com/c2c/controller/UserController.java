@@ -3,10 +3,12 @@ package com.c2c.controller;
 import com.c2c.pojo.Address;
 import com.c2c.pojo.Goods;
 import com.c2c.pojo.GoodsExtend;
+import com.c2c.pojo.Order;
 import com.c2c.pojo.User;
 import com.c2c.service.AddressService;
 import com.c2c.service.GoodsService;
 import com.c2c.service.ImageService;
+import com.c2c.service.OrderService;
 import com.c2c.util.DateUtil;
 import com.c2c.util.JsonUtil;
 import com.c2c.util.MD5;
@@ -41,6 +43,8 @@ public class UserController {
 	private ImageService imageService;
 	@Autowired
     private AddressService addressService;
+	@Autowired
+	private OrderService orderService;
 
 	/**
 	 * 用户注册
@@ -186,8 +190,13 @@ public class UserController {
      * 个人订单
      */
     @RequestMapping(value = "/myorder")
-    public String myorder() {
-        return "/user/myorder";
+    public ModelAndView myorder(HttpServletRequest request,Address address,Order order) {
+    	User cur_user = (User)request.getSession().getAttribute("cur_user");
+    	List<Order> orderList = orderService.selectOrderByUserId(cur_user.getId());
+    	ModelAndView mv=new ModelAndView();
+    	mv.addObject("orderList",orderList);
+    	mv.setViewName("/user/myorder");
+    	return mv;
     }
 
 
