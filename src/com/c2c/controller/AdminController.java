@@ -213,4 +213,26 @@ public class AdminController {
 		}
 		return result;
 	}
+	
+	/**
+	 * 修改用户状态
+	 * 
+	 * @param id
+	 * @param pd
+	 * @return
+	 */
+	@RequestMapping(value = "/tjshGoods", produces = { "application/json;charset=UTF-8" })
+	@ResponseBody
+	public String tjshGoods(@RequestParam("good_status") String good_status,@RequestParam("id") int id) {
+		String result = "";
+		
+//		goodsService.
+		int i = 0;
+		if (i > 0) {
+			result = "true";
+		} else {
+			result = "false";
+		}
+		return result;
+	}
 }
