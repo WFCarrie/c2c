@@ -100,5 +100,9 @@ public class GoodsServiceImpl implements GoodsService {
 		int i =goodsMapper.AllGoddsListCountSh(keyword);
 		return i;
 	}
+	
+	public int updateStatusBygoodsId(int id){
+		return goodsMapper.updateStatusBygoodsId(id);
+	}
 
 }
