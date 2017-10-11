@@ -271,7 +271,7 @@
 				<div class="slide" id="slide">
 					<div class="img-div">
 						<img src="<%=basePath%>img/l2.jpg" /> <img
-							src="<%=basePath%>img/l1.jpg"  /> <img
+							src="<%=basePath%>img/l1.jpg" /> <img
 							src="<%=basePath%>img/l3.jpg" />
 					</div>
 					<div class="slide-btn">
@@ -293,23 +293,26 @@
 				<c:forEach var="item" items="${catelogGoods1}">
 					<div class="card col">
 						<a href="<%=basePath%>goods/goodsId/${item.goods.id}">
-						<div class="card-image" style="background:url(../upload/${item.images[0].imgUrl})">
-                            <img src="../img/c2c.png">
-                        </div>
-						<div class="card-content item-price">
-							<c:out value="${item.goods.price}"></c:out>
-						</div>
-						<div class="card-content item-name">
-							<p>
-								<c:out value="${item.goods.name}"></c:out>
-							</p>
-						</div>
-						<div class="card-content item-location">
-							<p>C2C</p>
-							<p>
-								<c:out value="${item.goods.startTime}"></c:out>
-							</p>
-						</div>
+							<div class="card-image"
+								style="background:url(../upload/${item.images[0].imgUrl});background-size: 280px 280px;background-repeat: no-repeat;">
+								<c:if test="${item.goods.good_status ==3}">
+									<img src="../img/c2c.png">
+								</c:if>
+							</div>
+							<div class="card-content item-price">
+								<c:out value="${item.goods.price}"></c:out>
+							</div>
+							<div class="card-content item-name">
+								<p>
+									<c:out value="${item.goods.name}"></c:out>
+								</p>
+							</div>
+							<div class="card-content item-location">
+								<p>C2C</p>
+								<p>
+									<c:out value="${item.goods.startTime}"></c:out>
+								</p>
+							</div>
 						</a>
 					</div>
 				</c:forEach>
@@ -329,8 +332,11 @@
 
 					<div class="card col">
 						<a href="<%=basePath%>goods/goodsId/${item.goods.id}">
-							<div class="card-image">
-								<img src="../upload/${item.images[0].imgUrl}" />
+							<div class="card-image"
+								style="background:url(../upload/${item.images[0].imgUrl});background-size: 280px 280px;background-repeat: no-repeat;">
+								<c:if test="${item.goods.good_status ==3}">
+									<img src="../img/c2c.png">
+								</c:if>
 							</div>
 							<div class="card-content item-price">
 								<c:out value="${item.goods.price}"></c:out>
@@ -364,8 +370,11 @@
 				<c:forEach var="item" items="${catelogGoods2}">
 					<div class="card col">
 						<a href="<%=basePath%>goods/goodsId/${item.goods.id}">
-							<div class="card-image">
-								<img src="../upload/${item.images[0].imgUrl}" />
+							<div class="card-image"
+								style="background:url(../upload/${item.images[0].imgUrl});background-size: 280px 280px;background-repeat: no-repeat;">
+								<c:if test="${item.goods.good_status ==3}">
+									<img src="../img/c2c.png">
+								</c:if>
 							</div>
 							<div class="card-content item-price">
 								<c:out value="${item.goods.price}"></c:out>
@@ -396,8 +405,11 @@
 				<c:forEach var="item" items="${catelogGoods3}">
 					<div class="card col">
 						<a href="<%=basePath%>goods/goodsId/${item.goods.id}">
-							<div class="card-image">
-								<img src="../upload/${item.images[0].imgUrl}" />
+							<div class="card-image"
+								style="background:url(../upload/${item.images[0].imgUrl});background-size: 280px 280px;background-repeat: no-repeat;">
+								<c:if test="${item.goods.good_status ==3}">
+									<img src="../img/c2c.png">
+								</c:if>
 							</div>
 							<div class="card-content item-price">
 								<c:out value="${item.goods.price}"></c:out>
@@ -428,8 +440,11 @@
 				<c:forEach var="item" items="${catelogGoods4}">
 					<div class="card col">
 						<a href="<%=basePath%>goods/goodsId/${item.goods.id}">
-							<div class="card-image">
-								<img src="../upload/${item.images[0].imgUrl}" />
+							<div class="card-image"
+								style="background:url(../upload/${item.images[0].imgUrl});background-size: 280px 280px;background-repeat: no-repeat;">
+								<c:if test="${item.goods.good_status ==3}">
+									<img src="../img/c2c.png">
+								</c:if>
 							</div>
 							<div class="card-content item-price">
 								<c:out value="${item.goods.price}"></c:out>
@@ -460,8 +475,11 @@
 				<c:forEach var="item" items="${catelogGoods5}">
 					<div class="card col">
 						<a href="<%=basePath%>goods/goodsId/${item.goods.id}">
-							<div class="card-image">
-								<img src="../upload/${item.images[0].imgUrl}" />
+							<div class="card-image"
+								style="background:url(../upload/${item.images[0].imgUrl});background-size: 280px 280px;background-repeat: no-repeat;">
+								<c:if test="${item.goods.good_status ==3}">
+									<img src="../img/c2c.png">
+								</c:if>
 							</div>
 							<div class="card-content item-price">
 								<c:out value="${item.goods.price}"></c:out>
@@ -492,8 +510,11 @@
 				<c:forEach var="item" items="${catelogGoods6}">
 					<div class="card col">
 						<a href="<%=basePath%>goods/goodsId/${item.goods.id}">
-							<div class="card-image">
-								<img src="../upload/${item.images[0].imgUrl}" />
+							<div class="card-image"
+								style="background:url(../upload/${item.images[0].imgUrl});background-size: 280px 280px;background-repeat: no-repeat;">
+								<c:if test="${item.goods.good_status ==3}">
+									<img src="../img/c2c.png">
+								</c:if>
 							</div>
 							<div class="card-content item-price">
 								<c:out value="${item.goods.price}"></c:out>
@@ -524,8 +545,11 @@
 				<c:forEach var="item" items="${catelogGoods7}">
 					<div class="card col">
 						<a href="<%=basePath%>goods/goodsId/${item.goods.id}">
-							<div class="card-image">
-								<img src="../upload/${item.images[0].imgUrl}" />
+							<div class="card-image"
+								style="background:url(../upload/${item.images[0].imgUrl});background-size: 280px 280px;background-repeat: no-repeat;">
+								<c:if test="${item.goods.good_status ==3}">
+									<img src="../img/c2c.png">
+								</c:if>
 							</div>
 							<div class="card-content item-price">
 								<c:out value="${item.goods.price}"></c:out>
