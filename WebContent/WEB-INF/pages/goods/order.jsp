@@ -240,9 +240,6 @@ function usubmit(action){//获取radio的value的方法
 
 						<div class="clearfix"></div></td>
 						<td>&nbsp;1</td>
-<!-- 					<td class="check"><input type="text" value="1" -->
-<!-- 						onfocus="this.value='';" -->
-<!-- 						onblur="if (this.value == '') {this.value ='';}"></td> -->
 					<td>${ordersExtend.goodsPrice }</td>
 					<td style="width: 250px;">${ordersExtend.goodsDescrible }</td>
 					<td>${ordersExtend.goodsPrice }</td>
@@ -255,8 +252,6 @@ function usubmit(action){//获取radio的value的方法
 		</div>
 	</div>
 
-
-
 	<script src="<%=basePath%>js/city-picker.data.js"></script>
 	<script src="<%=basePath%>js/city-picker.js"></script>
 	<script src="<%=basePath%>js/main.js"></script>
@@ -264,7 +259,6 @@ function usubmit(action){//获取radio的value的方法
 	<script type="text/javascript">
 	
 	function saveAddress(){
-		
 		var buyerName = $("#buyerName").val().trim();
 		var buyerPhone = $("#buyerPhone").val().trim();
 		var address1 =$("#address11").val().trim();
@@ -313,7 +307,6 @@ function add() {
 		}
 	}
 	
-		
 		);
 	
 }

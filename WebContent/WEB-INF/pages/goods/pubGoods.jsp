@@ -21,7 +21,6 @@
     <link rel="stylesheet" href="../css/fileinput.min.css">
     <script type="text/javascript" src="../js/fileinput.min.js"></script>
     <script type="text/javascript" src="../js/zh.js"></script>
-
     <style>
         .container{padding-top:10px}
     </style>
@@ -59,35 +58,30 @@
                  <ul>
                     <a href="">
                         <li class="notice">
-                            
                             <span>我的消息</span>
                             <strong></strong>
                         </li>
                     </a>
                  <a href="<%=basePath%>collection/scList">
                         <li class="fri">
-                            
                             <span>收藏列表</span>
                             <strong></strong>
                         </li>
                     </a>
                     <a href="<%=basePath%>user/basic">
                         <li class="set">
-                            
                             <span>个人设置</span>
                             <strong></strong>
                         </li>
                     </a>
                     <a href="<%=basePath%>goods/publishGoods">
                         <li class="store">
-                            
                             <span>发布物品</span>
                             <strong></strong>
                         </li>
                     </a>
                     <a href="<%=basePath%>user/allGoods">
                         <li class="second">
-                            
                             <span>我的闲置</span>
                             <strong></strong>
                         </li>

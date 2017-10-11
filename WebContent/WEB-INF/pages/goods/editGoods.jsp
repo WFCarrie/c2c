@@ -38,8 +38,6 @@
             </a>
         </div>
         <!--
-            作者：hlk_1135@outlook.com
-            时间：2017-05-10
             描述：左侧个人中心栏
         -->
         <div id="user_nav">
@@ -58,35 +56,35 @@
                 <ul>
                     <a href="">
                         <li class="notice">
-                            
+
                             <span>我的消息</span>
                             <strong></strong>
                         </li>
                     </a>
-                    <a href="<%=basePath%>collection/scList">
+                 <a href="<%=basePath%>collection/scList">
                         <li class="fri">
-                            
+
                             <span>收藏列表</span>
                             <strong></strong>
                         </li>
                     </a>
                     <a href="<%=basePath%>user/basic">
                         <li class="set">
-                            
+
                             <span>个人设置</span>
                             <strong></strong>
                         </li>
                     </a>
                     <a href="<%=basePath%>goods/publishGoods">
                         <li class="store">
-                            
+
                             <span>发布物品</span>
                             <strong></strong>
                         </li>
                     </a>
                     <a href="<%=basePath%>user/allGoods">
                         <li class="second">
-                            
+
                             <span>我的闲置</span>
                             <strong></strong>
                         </li>
@@ -108,8 +106,6 @@
             </div>
         </div>
         <!--
-	            作者：hlk_1135@outlook.com
-	            时间：2017-05-10
 	            描述：发布物品
         -->
         <div id="user_content">
@@ -179,8 +175,6 @@
                 </form:form>
             </div>
             <!--
-                作者：hlk_1135@outlook.com
-                时间：2017-05-10
                 描述：最右侧，可能认识的人
             -->
             <div class="recommend">
