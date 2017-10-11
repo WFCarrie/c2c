@@ -261,6 +261,7 @@ width:700px}
         <div class="publisher-info-title">
             <em>卖家信息</em><hr>
         </div>
+        
         <c:if test="${empty cur_user}">
             <div class="item-contact">
                 <p class="not-login">

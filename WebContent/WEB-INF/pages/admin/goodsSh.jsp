@@ -16,7 +16,7 @@
 
 <link rel="stylesheet" href="<%=basePath%>css/bootstrap.min.css">
 <link rel="stylesheet" href="<%=basePath%>css/jquery.bootgrid.min.css">
-
+<link rel="stylesheet" href="<%=basePath%>css/shenhe.css">
 <link
 	href="<%=basePath%>css/plugins/bootstrap-table/bootstrap-table.min.css"
 	rel="stylesheet">
@@ -36,8 +36,8 @@
 <body class="gray-bg">
 	<div class="wrapper wrapper-content animated fadeInRight">
 		<div class="col-sm-12">
-<%-- 			<a class="btn btn-primary" href="<%=basePath%>admin/exportUser" --%>
-<!-- 				style="text-decoration: none; margin-top: 10px;">导出数据为excel</a> -->
+			<%-- 			<a class="btn btn-primary" href="<%=basePath%>admin/exportUser" --%>
+			<!-- 				style="text-decoration: none; margin-top: 10px;">导出数据为excel</a> -->
 			<div class="example-wrap">
 				<h4 class="example-title"
 					style="margin-top: 15px; margin-bottom: -28px;">c2c商品信息审核</h4>
@@ -154,12 +154,10 @@
 															field : 'opt',
 															title : '操作',
 															align : 'center',
-															formatter : function( value, row,index) {
+															formatter : function(value, row,index) {
 																return '<button id="'
 																+ row.id
-																+ '"  type="button" class=" btn btn-info btn-sm" data-toggle="modal" data-target="#myModal" onClick=sh('
-																+ row
-																+ ')>审核</button>';
+																+ '"  type="button" class=" btn btn-info btn-sm" data-toggle="modal" data-target="#myModal" onClick=sh('+ JSON.stringify(row).replace(/"/g, '&quot;') + ')>审核</button>';
 
 															}
 
@@ -179,93 +177,66 @@
 		
 		
 		//触发模态框的同时调用此方法  
-		function sh(row) {
-			
-		    //获取表格中的一行数据  
-// 		var xs = $('tbody tr td').eq(1).text();
-
-// 		alert($('tr[id="84"]'));
-		
-// 		var xs = $('tbody tr[id="84"] td').eq(1).text();
-		
-// 		alert(xs);
-
-  			
-		    //向模态框中传值  
-// 		    $('#IDS').val(xs);  
-// 		    $('#pass').val(pass);  
-// 		    $('#stuname').val(name);  
-// 		    if (sex == '女') {  
-// 		        document.getElementById('women').checked = true;  
-// 		    } else {  
-// 		        document.getElementById('man').checked = true;  
-// 		    }  
+		function sh(obj) {
+// 			console.log(obj);
+		    //获取表格中的一行数据
+		    //向模态框中传值  		    
+		    $("#shmodal").html(" <div class='she'><img src='../upload/"+obj.image[0].imgUrl+"' width='25%' hight='50%'/></div>"
+		    +"<div class='she1'>"
+		    +"<input type='hidden'  id='id' value='"+obj.id+"'/>"
+		    +"<div>类别名："+obj.catelog[0].name+"awda&nbsp;&nbsp;&nbsp;&nbsp;商品名："+obj.name+"</div>"
+		    +"<div class='yuanjia'>商品原价：<a>"+obj.realPrice+"</a></div>"
+		    
+		    +"<div class='xianjia'>商品现价：<a>"+obj.price+"</a></div>"
+		    
+		    +"<div>商品简介："+obj.describle+"</div>"
+		    
+		    +"<div>审核：<select id='sh'>"
+		  	    +"<option value='1'>审核通过</option>"
+		    	+"<option value='2'>审核不通过</option>"
+		    +"</select></div>"
+		    +"</div>");
 		    $('#update').modal('show');  
 		}  
 		
 		
+		
+		
 	</script>
-	
-	
-	
-	<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-	<div class="modal-dialog">
-		<div class="modal-content">
-			<div class="modal-header">
-				<button type="button" class="close" data-dismiss="modal" aria-hidden="true">
-					&times;
-				</button>
-				<h4 class="modal-title" id="myModalLabel"> 审核 </h4>
-			</div>
-			
-			<div class="modal-body" style="height: 330px;" >
-			
-				
-			</div>
-			<div class="modal-footer">
-				<button type="button" class="btn btn-default" data-dismiss="modal">关闭
-				</button>
-				<button type="button" class="btn btn-primary">
-					提交更改
-				</button>
-			</div>
-		</div>
-	</div>	
-	
-	<!-- 	模态窗口 		 -->
-	<div class="modal fade stumodal" tabindex="-1" role="dialog"
-		aria-labelledby="mySmallModalLabel">
-		<div class="modal-dialog modal-sm">
+	<div class="modal fade" id="myModal" tabindex="-1" role="dialog"
+		aria-labelledby="myModalLabel" aria-hidden="true">
+		<div class="modal-dialog">
 			<div class="modal-content">
 				<div class="modal-header">
 					<button type="button" class="close" data-dismiss="modal"
-						aria-label="Close">
-						<span aria-hidden="true">&times;</span>
-					</button>
-					<h4 class="modal-title">信息修改</h4>
+						aria-hidden="true">&times;</button>
+					<h4 class="modal-title" id="myModalLabel">审核</h4>
 				</div>
-				<form action="" method="post">
-					<div class="modal-body">
-						<div class="form-group">
-							<label for="userId2">userId</label> <input type="text"
-								name="userId" class="form-control" id="userId2" readonly="true">
-						</div>
-						<div class="form-group">
-							<label for="userName2">userName</label> <input type="text"
-								name="userName" class="form-control" id="userName2"
-								readonly="true">
-						</div>
-						<div class="form-group">
-							<label for="userPower2">userPower</label> <input type="text"
-								name="userPower" class="form-control" id="userPower2">
-						</div>
-					</div>
-					<div class="modal-footer">
-						<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-						<button type="submit" class="btn btn-primary">Save</button>
-					</div>
-				</form>
+
+				<div class="modal-body" id="shmodal" style="height: 330px;">
+
+
+
+				</div>
+				<div class="modal-footer">
+					<button type="button" class="btn btn-default" data-dismiss="modal">关闭
+					</button>
+					<button type="button" class="btn btn-primary" onclick="tjshGoods()">提交更改</button>
+				</div>
 			</div>
 		</div>
+	</div>
+	<script>
+	function tjshGoods() {
+		var good_status = $("#sh").val().trim();
+		$.post("../admin/tjshGoods", {
+			"good_status" : good_status,
+			"id" : id
+		}, function(result) {
+			$('#myModal').modal('hide');
+			$("#articleListTable").bootstrapTable('refresh',"articlelist.do");
+		});
+	}  
+	</script>
 </body>
 </html>
