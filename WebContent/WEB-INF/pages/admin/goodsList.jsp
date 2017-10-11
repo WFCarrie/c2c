@@ -36,13 +36,13 @@
 <body class="gray-bg">
 	<div class="wrapper wrapper-content animated fadeInRight">
 		<div class="col-sm-12">
-			<a class="btn btn-primary" href="<%=basePath%>admin/exportUser"
-				style="text-decoration: none; margin-top: 10px;">导出数据为excel</a>
+			<%-- 			<a class="btn btn-primary" href="<%=basePath%>admin/exportUser" --%>
+			<!-- 				style="text-decoration: none; margin-top: 10px;">导出数据为excel</a> -->
 			<div class="example-wrap">
 				<h4 class="example-title"
 					style="margin-top: 15px; margin-bottom: -28px;">c2c商品信息</h4>
 				<div class="example">
-					<table id="userListTable">
+					<table id="goodsListTable">
 					</table>
 				</div>
 			</div>
@@ -53,7 +53,7 @@
 		$(document)
 				.ready(
 						function() {
-							$("#userListTable")
+							$("#goodsListTable")
 									.bootstrapTable(
 											{
 												url : "../admin/getGoodsLists",
@@ -87,14 +87,19 @@
 															title : '图片',
 															align : 'center',
 															width : '20%',
-															hight:  '20%',
-															formatter : function( value, row, index) {
-																var options=[];
-																for(var i=0;i<value.length;i++){
-																	var a=value[i];
-																	options.push(a.imgUrl);
+															hight : '20%',
+															formatter : function(
+																	value, row,
+																	index) {
+																var options = [];
+																for (var i = 0; i < value.length; i++) {
+																	var a = value[i];
+																	options
+																			.push(a.imgUrl);
 																}
-																return "<img src='../upload/"+options+"' width='25%' hight='25%'/>";
+																return "<img src='../upload/"
+																		+ options
+																		+ "' width='25%' hight='25%'/>";
 															}
 														},
 														{
@@ -105,11 +110,14 @@
 															field : 'catelog',
 															title : '类别名',
 															align : 'center',
-															formatter : function( value, row, index) {
-																var options=[];
-																for(var i=0;i<value.length;i++){
-																	var a=value[i];
-																	options.push(a.name);
+															formatter : function(
+																	value, row,
+																	index) {
+																var options = [];
+																for (var i = 0; i < value.length; i++) {
+																	var a = value[i];
+																	options
+																			.push(a.name);
 																}
 																return options;
 															}
@@ -118,7 +126,7 @@
 															field : 'name',
 															title : '商品名',
 															width : '20%',
-															hight:  '20%'
+															hight : '20%'
 														},
 														{
 															field : 'describle',
@@ -154,17 +162,16 @@
 															field : 'opt',
 															title : '操作',
 															align : 'center',
-															formatter : function( value, row,index) {
+															formatter : function(
+																	value, row,
+																	index) {
 																return '<button id="'
-																+ row.id
-																+ '"  type="button" class="btn btn-outline btn-default" onClick=enableAccount('
-																+ row.id
-																+ ')>启用</button>';
+																		+ row.id
+																		+ '"  type="button" class="btn btn-outline btn-default" onClick=xjGoods('+row.id+')>下架</button>';
 
 															}
 
-														}
-												]
+														} ]
 											});
 						});
 
@@ -177,14 +184,15 @@
 			return temp;
 		}
 
-		// 		function queryParams(params) {
-		// 			var temp = { //这里的键的名字和控制器的变量名必须一直，这边改动，控制器也需要改成一样的
-		// 				pageSize : params.limit, //页面大小
-		// 				currentPage : params.offset, //页码
-		// 				keyword : $("div.pull-right.search > input").val()
-		// 			};
-		// 			return temp;
-		// 		}
+		function xjGoods(id) {
+			$.post("../admin/xjGoods", {
+				"goodsId" : id
+			}, function(result) {
+				alert("下架成功！");
+				//$('#myModal').modal('hide');
+				$("#goodsListTable").bootstrapTable('refresh', "../admin/getGoodsLists");
+			});
+		}
 	</script>
 </body>
 </html>

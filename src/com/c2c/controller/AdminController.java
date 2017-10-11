@@ -5,6 +5,7 @@ import com.c2c.pojo.User;
 import com.c2c.util.JsonUtil;
 import com.c2c.util.UserGrid;
 import com.c2c.service.GoodsService;
+import com.c2c.service.ImageService;
 import com.c2c.service.UserService;
 
 import org.apache.commons.io.IOUtils;
@@ -24,6 +25,12 @@ import java.util.Map;
 
 /**
  * 管理端
+ * <p>Title:AdminController</p>
+ * <p>Description: </p>
+ * <p>Company:com.c2c</p>
+ * @author Muling
+ * @date 2017年10月11日 下午4:00:50
+ * @version 1.0
  */
 @Controller
 @RequestMapping(value = "/admin")
@@ -35,6 +42,8 @@ public class AdminController {
 	@Resource
 	private GoodsService goodsService;
 
+	@Resource
+	private ImageService imageservice;
 	
 	@RequestMapping(value = "/adminIndex", method = RequestMethod.GET)
 	public String adminIndex() {
@@ -215,7 +224,7 @@ public class AdminController {
 	}
 	
 	/**
-	 * 修改用户状态
+	 * 商品审核
 	 * 
 	 * @param id
 	 * @param pd
@@ -225,9 +234,30 @@ public class AdminController {
 	@ResponseBody
 	public String tjshGoods(@RequestParam("good_status") String good_status,@RequestParam("id") int id) {
 		String result = "";
-		
 		goodsService.updateGoodsStatusBygoodsId(good_status,id);
 		int i = 0;
+		if (i > 0) {
+			result = "true";
+		} else {
+			result = "false";
+		}
+		return result;
+	}
+	
+	/**
+	 * 下架商品
+	 * 
+	 * @param id
+	 * @param pd
+	 * @return
+	 */
+	@RequestMapping(value = "/xjGoods", produces = { "application/json;charset=UTF-8" })
+	@ResponseBody
+	public String xjGoods(@RequestParam("goodsId") int goodsId) {
+		String result = "";
+		goodsService.deleteGoodsByPrimaryKey(goodsId);
+		int imgid = imageservice.getImagesId(goodsId);
+		int i = imageservice.deleteImagesByGoodsPrimaryKey(imgid);
 		if (i > 0) {
 			result = "true";
 		} else {
