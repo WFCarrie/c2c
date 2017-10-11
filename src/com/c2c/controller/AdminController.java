@@ -253,11 +253,21 @@ public class AdminController {
 	 */
 	@RequestMapping(value = "/xjGoods", produces = { "application/json;charset=UTF-8" })
 	@ResponseBody
-	public String xjGoods(@RequestParam("goodsId") int goodsId) {
+	public String xjGoods(@RequestParam("goodsId") int goodsId,HttpServletRequest request){
+		User cur_user = (User)request.getSession().getAttribute("cur_user");
 		String result = "";
+		Goods goods = goodsService.getGoodsByPrimaryKey(goodsId);
 		goodsService.deleteGoodsByPrimaryKey(goodsId);
 		int imgid = imageservice.getImagesId(goodsId);
-		int i = imageservice.deleteImagesByGoodsPrimaryKey(imgid);
+		imageservice.deleteImagesByGoodsPrimaryKey(imgid);
+		User user = userService.selectByPrimaryKey(goods.getUserId());
+//		System.out.println(user.getGoodsNum());
+//		int number = user.getGoodsNum()-1;
+		
+//		 uset.setGoodsNum(user-1);
+//	     request.getSession().setAttribute("cur_user",cur_user);//修改session值
+		
+		int i = userService.updateGoodsNum(user.getId(),user.getGoodsNum()-1);
 		if (i > 0) {
 			result = "true";
 		} else {
