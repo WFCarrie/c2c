@@ -29,7 +29,15 @@ import javax.servlet.http.HttpServletResponse;
 
 import java.util.ArrayList;
 import java.util.List;
-
+/**
+ * 用户controller
+ * <p>Title:UserController</p>
+ * <p>Description:用户控制层 </p>
+ * <p>Company:com.c2c</p>
+ * @author Muling
+ * @date 2017年10月11日 下午4:08:12
+ * @version 1.0
+ */
 @Controller
 @RequestMapping(value = "/user")
 public class UserController {
@@ -58,13 +66,12 @@ public class UserController {
 		String url = request.getHeader("Referer");
 		User user = userService.getUserByPhone(user1.getPhone());
 		if (user == null) {// 检测该用户是否已经注册
-			String t = DateUtil.getNowDate();
 			// 对密码进行MD5加密
 			String str = MD5.md5(user1.getPassword());
-			user1.setCreateAt(t);// 创建开始时间
+			user1.setCreateAt(DateUtil.getNowDate());// 创建开始时间
 			user1.setPassword(str);
 			user1.setGoodsNum(0);
-			user1.setStatus(new Byte("0"));
+			user1.setStatus(new Byte("1"));
 			user1.setPower(new Byte("10"));
 			userService.addUser(user1);
 		}

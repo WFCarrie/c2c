@@ -191,7 +191,7 @@
 		    
 		    +"<div>商品简介："+obj.describle+"</div>"
 		    
-		    +"<div>审核：<select id='sh'>"
+		    +"<div>审核：<select id='shs'>"
 		  	    +"<option value='1'>审核通过</option>"
 		    	+"<option value='2'>审核不通过</option>"
 		    +"</select></div>"
@@ -227,16 +227,19 @@
 		</div>
 	</div>
 	<script>
-	function tjshGoods() {
-		var good_status = $("#sh").val().trim();
-		$.post("../admin/tjshGoods", {
-			"good_status" : good_status,
-			"id" : id
-		}, function(result) {
-			$('#myModal').modal('hide');
-			$("#articleListTable").bootstrapTable('refresh',"articlelist.do");
-		});
+	function tjshGoods(){
+		var good_status = $("#shs").val().trim();
+		var id = $("#id").val().trim();
+	 	$.post("../admin/tjshGoods", {
+		"good_status" : good_status,
+		"id" : id
+	}, function(result) {
+		$('#myModal').modal('hide');
+		$("#goodsShListTable").bootstrapTable('refresh',"../admin/GoodsListsSh");
+	});
 	}  
+	
+
 	</script>
 </body>
 </html>
