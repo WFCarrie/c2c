@@ -17,10 +17,12 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.c2c.pojo.Address;
+import com.c2c.pojo.Goods;
 import com.c2c.pojo.Order;
 import com.c2c.pojo.OrdersExtend;
 import com.c2c.pojo.User;
 import com.c2c.service.AddressService;
+import com.c2c.service.GoodsService;
 import com.c2c.service.OrderService;
 
 
@@ -33,6 +35,8 @@ public class OrderController {
 	private OrderService orderService;
 	@Autowired
 	private AddressService addressService;
+	@Autowired
+	private GoodsService goodsService;
 	
 	/*
 	 * 进入购买界面
@@ -70,7 +74,7 @@ public ModelAndView enterOrder(HttpServletRequest request,Address address)
  */
 @RequestMapping(value = "/add",produces = {"application/json;charset=UTF-8"})
 @ResponseBody
-public String addOrders(HttpServletRequest request, Order order)throws Exception {
+public String addOrders(HttpServletRequest request, Order order,Goods goods)throws Exception {
 	String msg="";
     //查询出当前用户cur_user对象，便于使用id
     User cur_user = (User)request.getSession().getAttribute("cur_user");
@@ -86,6 +90,8 @@ public String addOrders(HttpServletRequest request, Order order)throws Exception
     int i = orderService.addOrder(order);//在order表中插入订单
     if(i==0){
  	   msg="true";
+ 	   //如果添加成功，更改商品状态为已卖出
+     goodsService.updateStatusBygoodsId(goodsId);
     }else{
  	   msg="false";
     }

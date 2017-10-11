@@ -56,30 +56,35 @@
                 <ul>
                     <a href="">
                         <li class="notice">
+
                             <span>我的消息</span>
                             <strong></strong>
                         </li>
                     </a>
                  <a href="<%=basePath%>collection/scList">
                         <li class="fri">
+
                             <span>收藏列表</span>
                             <strong></strong>
                         </li>
                     </a>
                     <a href="<%=basePath%>user/basic">
                         <li class="set">
+
                             <span>个人设置</span>
                             <strong></strong>
                         </li>
                     </a>
                     <a href="<%=basePath%>goods/publishGoods">
                         <li class="store">
+
                             <span>发布物品</span>
                             <strong></strong>
                         </li>
                     </a>
                     <a href="<%=basePath%>user/allGoods">
                         <li class="second">
+
                             <span>我的闲置</span>
                             <strong></strong>
                         </li>
@@ -105,7 +110,7 @@
         -->
         <div id="user_content">
             <div class="basic">
-                <form:form action="goods/editGoodsSubmit" method="post" role="form" enctype="multipart/form-data">
+                <form:form action="../../goods/editGoodsSubmit" method="post" role="form" enctype="multipart/form-data">
                     <h1 style="margin-left: 210px;">修改物品信息</h1><hr />
                     <div class="changeinfo">
                         <span>物品名：</span>
