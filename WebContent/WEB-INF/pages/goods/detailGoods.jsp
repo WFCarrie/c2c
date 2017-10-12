@@ -311,7 +311,9 @@ width:700px}
                 </div>
                 </div>
                 </c:if>
-                <c:if test="${goodsExtend.goods.good_status==3}"><h1 >已售出</h1></c:if>
+                <c:if test="${goodsExtend.goods.good_status==3}">
+                	<h1 class="shouchu">已售出</h1>
+                	</c:if>
             </div>
         </c:if>
         <h1 class="item-pub-time">发布于 ${goodsExtend.goods.startTime}</h1>

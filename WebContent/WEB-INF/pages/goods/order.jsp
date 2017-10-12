@@ -301,13 +301,7 @@ function add() {
 	var goodsPrice="${ordersExtend.goodsPrice}";
 	var image="${ordersExtend.image}";
 	var goodsDescrible="${ordersExtend.goodsDescrible}";
-	var addressId ;	
-	var radios = document.getElementById("upadrs").radio1;//获取id为list下的所有name为radio1的值的集合
-	for(var i=0;i<radios.length;i++){
-		if(radios[i].checked){
-		addressId=radios[i].value;
-		}
-		}
+	var addressId = $("input[name='radio1']:checked").val();
 		$.post("<%=basePath%>order/add", {
 		"goodsId" : goodsId,
 		"goodsPrice" : goodsPrice,

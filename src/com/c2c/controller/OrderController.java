@@ -27,7 +27,15 @@ import com.c2c.service.OrderService;
 
 
 
-
+/**
+ * 订单页
+ * <p>Title:OrderController</p>
+ * <p>Description:订单页</p>
+ * <p>Company:com.c2c</p>
+ * @author Muling
+ * @date 2017年10月11日 下午4:06:51
+ * @version 1.0
+ */
 @Controller
 @RequestMapping(value ="/order")
 public class OrderController {
