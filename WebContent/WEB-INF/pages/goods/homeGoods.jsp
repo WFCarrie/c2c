@@ -95,6 +95,7 @@
 						</li>
 						<li><a href=" <%=basePath%>user/allGoods">我发布的商品</a></li>
 						<li><a>${cur_user.username}</a></li>
+						<!-- 系统信息推送 -->
 						<li class="notification"><i ng-click="showNotificationBox()"
 							class="iconfont"></i>
 							<div ng-show="notification.tagIsShow"
