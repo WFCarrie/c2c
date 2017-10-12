@@ -28,7 +28,8 @@
     <collection property="goods" javaType="java.util.List" ofType="com.c2c.pojo.Goods">  
             <id column="id" property="id" jdbcType="INTEGER" />  
             <result column="name" property="name" jdbcType="VARCHAR" />   
-            <result column="describle" property="describle" jdbcType="VARCHAR" />   
+            <result column="describle" property="describle" jdbcType="VARCHAR" />
+            <result column="good_status" property="good_status" jdbcType="INTEGER" />     
         </collection> 
     <collection property="address" javaType="java.util.List" ofType="com.c2c.pojo.Address">  
             <id column="id" property="id" jdbcType="INTEGER" />
@@ -49,7 +50,7 @@
   
   <select id="selectOrderByUserId" resultMap="OrderListResultMap">
 	  
-	  SELECT O.*,Ima.img_url,G.describle ,G.`name`,AD.* FROM `order` O
+	  SELECT O.*,Ima.img_url,G.describle ,G.`name`,G.good_status,AD.*,G.ID FROM `order` O
 	  LEFT JOIN image Ima ON O.goods_id=Ima.goods_id
 	  LEFT JOIN goods G ON O.goods_id=G.id
 	  LEFT JOIN address AD ON AD.id=O.address_id

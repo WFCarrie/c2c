@@ -353,5 +353,33 @@ public class GoodsController {
         }
     }
     
+    
+    @RequestMapping(value = "/goodStatus4", produces = { "application/json;charset=UTF-8" })
+	@ResponseBody
+	public String goodStatus4(HttpServletRequest request) {
+		String msg = "";
+		int goodsId=Integer.parseInt(request.getParameter("goodsId"));
+		int i =  goodsService.updateGoodsStatusBygoodsId("4", goodsId);
+		if (i > 0) {
+			msg = "true";
+		} else {
+			msg = "false";
+		}
+		return msg;
+	}
+    
+    @RequestMapping(value = "/goodStatus5", produces = { "application/json;charset=UTF-8" })
+   	@ResponseBody
+   	public String goodStatus5(HttpServletRequest request) {
+   		String msg = "";
+   		int goodsId=Integer.parseInt(request.getParameter("goodsId"));
+   		int i =  goodsService.updateGoodsStatusBygoodsId("5", goodsId);
+   		if (i > 0) {
+   			msg = "true";
+   		} else {
+   			msg = "false";
+   		}
+   		return msg;
+   	}
 
 }

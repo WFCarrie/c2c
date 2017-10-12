@@ -30,4 +30,8 @@ public class AddressServiceImpl implements AddressService{
 		int i =addressMapper.deleteByPrimaryKey(id);
 		return i ;
 	}
+	public List<Address> addressListReturn(Integer id){
+		List<Address> addressList  = addressMapper.addressListReturn(id);
+		return addressList;
+	}
 }

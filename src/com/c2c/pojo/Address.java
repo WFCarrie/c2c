@@ -1,5 +1,7 @@
 package com.c2c.pojo;
 
+import java.util.List;
+
 public class Address {
     private Integer id;
 
@@ -10,7 +12,9 @@ public class Address {
     private String buyerPhone;
 
     private String addressContent;
-
+    
+    private List<User> user;
+    
     public Integer getId() {
         return id;
     }
@@ -50,4 +54,12 @@ public class Address {
     public void setAddressContent(String addressContent) {
         this.addressContent = addressContent == null ? null : addressContent.trim();
     }
+
+	public List<User> getUser() {
+		return user;
+	}
+
+	public void setUser(List<User> user) {
+		this.user = user;
+	}
 }
