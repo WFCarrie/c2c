@@ -58,8 +58,9 @@
 			goods g
 		LEFT JOIN catelog c ON g.catelog_id = c.id
 		LEFT JOIN image i ON g.id = i.goods_id
-		where c.`name` like CONCAT('%',#{0},'%')
-		 limit #{1},#{2}
+		where g.good_status=1
+		and c.`name` like CONCAT('%',#{0},'%')
+		limit #{1},#{2}
 		
   </select>
   <select id="AllGoddsListCount" parameterType="String" resultType="java.lang.Integer" >
@@ -69,7 +70,8 @@
 			goods g
 		LEFT JOIN catelog c ON g.catelog_id = c.id
 		LEFT JOIN image i ON g.id = i.goods_id
-		where c.`name` like CONCAT('%',#{0},'%') 
+		where g.good_status=1
+		and c.`name` like CONCAT('%',#{0},'%') 
   </select>
   
   <!--   商品管理sql审核 -->
@@ -91,9 +93,9 @@
 			goods g
 		LEFT JOIN catelog c ON g.catelog_id = c.id
 		LEFT JOIN image i ON g.id = i.goods_id
-		where c.`name` like CONCAT('%',#{0},'%')
-		and g.good_status=0
-		 limit #{1},#{2}
+		where g.good_status=0
+		and c.`name` like CONCAT('%',#{0},'%')
+		limit #{1},#{2}
 		
   </select>
   <select id="AllGoddsListCountSh" parameterType="String" resultType="java.lang.Integer" >
@@ -134,14 +136,19 @@
   
   <select id="selectByCatelog" resultMap="ResultMapWithBLOBs">
     select * from goods
-    where catelog_id = #{catelog_id,jdbcType=INTEGER}
+  	  where 1=1  and good_status in (1,3)
     <if test="name != null" >
      AND (name like concat('%',#{name},'%')
     </if>
-    <if test="describle != null" >
-     OR describle like concat('%',#{describle},'%'))
+    <if test="catelog_id !='0'.toString()">
+    and catelog_id = #{catelog_id,jdbcType=INTEGER}
     </if>
-    <include refid="Factor"></include>
+    <if test="describle != null" >
+     	OR describle like concat('%',#{describle},'%'))
+    </if>
+<!-- <include refid="Factor"></include> -->
+    order by id DESC
+    limit 10
   </select>
   
   
@@ -158,7 +165,7 @@
     select * from goods
     where catelog_id = #{catelogId,jdbcType=INTEGER}
     and good_status in (1,3)
-    order by polish_time DESC
+    order by id DESC
     limit #{limit,jdbcType=INTEGER}
   </select>
 

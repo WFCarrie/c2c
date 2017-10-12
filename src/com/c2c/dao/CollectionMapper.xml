@@ -25,4 +25,9 @@
   	SELECT * FROM collection WHERE user_id =#{0}  and goods_id=#{1}
   </select>
   
+  <delete id="deleteCollectionGoods" parameterType="java.lang.Integer" >
+    delete from collection
+    where goods_id = #{id,jdbcType=INTEGER}
+  </delete>
+  
 </mapper>

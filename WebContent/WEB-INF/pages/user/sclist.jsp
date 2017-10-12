@@ -120,6 +120,7 @@
                             <div class="story">
                                 <a href="<%=basePath%>goods/goodsId/${items.goodsid}" class="head_img">
                                     <img src="../upload/${items.img_url}">
+                                    
                                 </a>
                                 <span class="name">${items.goods_name}</span>
                                 <span class="text" style="overflow: hidden; outline: none;">${items.goods_describle}</span>
@@ -132,8 +133,8 @@
                                         <img src="../upload/${items.img_url}" index="2">
                                         <span class="com" style="display: none;left: 396.733px;"></span>
                                     </div>
-                                    
                                 </div>
+                                 <span class="fa fa-trash" style=" margin-left:10px;"><a href="<%=basePath%>collection/deleteCollectionGoods/${items.goodsid}">删除</a></span>
                             </div>
                         </c:forEach>
                     </c:if>

@@ -132,14 +132,15 @@
                                     </div>
                                     <div class="interact">
                                         <span class="fa fa-heart"><a href="<%=basePath%>goods/editGoods/${items.goods.id}">编辑</a></span>
-                                        <span class="fa fa-share"><a href="">擦亮</a></span>
-                                        <span class="fa fa-commenting"><a>${items.goods.commetNum}0</a></span>
+<%--                                         <span class="fa fa-commenting"><a>${items.goods.commetNum}0</a></span> --%>
                                         <c:if test="${items.goods.good_status ==3}">
                                         <span class="fa fa-commenting"><a onclick="goodStatus4(${items.goods.id})">已出售,请立即发货</a></span>
                                         </c:if>
                                         <span class="time">${items.goods.startTime}</span>
+
                                         <c:if test="${items.goods.good_status < 3}">
                                         <span class="fa fa-trash"><a href="<%=basePath%>goods/deleteGoods/${items.goods.id}">删除</a></span>
+
                                         </c:if>
                                         <c:if test="${items.goods.good_status ==4}">
                                         <span class="">已发货等待买家收货</span>
@@ -150,7 +151,8 @@
                                     </div>
                                     <div class="like_detail">
                                         <div class="like_content">
-                                            <span>下架时间：${items.goods.endTime}</span>
+                                       <span></span>
+<%--                                             <span>下架时间：${items.goods.endTime}</span> --%>
                                         </div>
                                     </div>
                                 </div>

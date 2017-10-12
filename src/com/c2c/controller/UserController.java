@@ -71,7 +71,7 @@ public class UserController {
 			user1.setCreateAt(DateUtil.getNowDate());// 创建开始时间
 			user1.setPassword(str);
 			user1.setGoodsNum(0);
-			user1.setStatus(new Byte("1"));
+			user1.setStatus(new Byte("0"));
 			user1.setPower(new Byte("10"));
 			userService.addUser(user1);
 		}
