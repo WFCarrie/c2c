@@ -254,7 +254,6 @@ public class AdminController {
 	@RequestMapping(value = "/xjGoods", produces = { "application/json;charset=UTF-8" })
 	@ResponseBody
 	public String xjGoods(@RequestParam("goodsId") int goodsId,HttpServletRequest request){
-		User cur_user = (User)request.getSession().getAttribute("cur_user");
 		String result = "";
 		Goods goods = goodsService.getGoodsByPrimaryKey(goodsId);
 		goodsService.deleteGoodsByPrimaryKey(goodsId);

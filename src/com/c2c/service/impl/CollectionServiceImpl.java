@@ -33,4 +33,9 @@ public class CollectionServiceImpl implements CollectionService{
     	List<Collection> collection = collectionMapper.selectScList(user_id);
 		return collection;
 	}
+	@Override
+	public int deleteCollectionGoods(Integer goodsId) {
+		return collectionMapper.deleteCollectionGoods(goodsId);
+		
+	}
 }

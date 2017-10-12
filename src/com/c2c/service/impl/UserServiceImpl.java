@@ -77,7 +77,7 @@ public class UserServiceImpl implements UserService {
             obj[5]=list.get(i).getGoodsNum();
             obj[6]=list.get(i).getPower()==10? "普通用户":"管理员";
             obj[7]=list.get(i).getLastLogin();
-            obj[8]=list.get(i).getStatus()==1?"禁用":"启用";
+            obj[8]=list.get(i).getStatus()==1?"禁用":"正常";
             dataList.add(obj);
         }
         WriteExcel ex = new WriteExcel(title, dataList);

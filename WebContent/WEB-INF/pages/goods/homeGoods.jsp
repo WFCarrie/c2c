@@ -99,7 +99,7 @@
 						<li class="notification"><i ng-click="showNotificationBox()"
 							class="iconfont"></i>
 							<div ng-show="notification.tagIsShow"
-								class="notification-amount red lighten-1 ng-binding ng-hide">0
+								class="notification-amount red lighten-1 ng-binding ng-hide">
 							</div></li>
 						<li class="changemore"><a class="changeMoreVertShow()"> <i
 								class="iconfont"></i>
@@ -231,7 +231,7 @@
 	<div ng-controller="sidebarController"
 		class="sidebar stark-components ng-scope">
 		<li ng-class="{true: 'active'}[isAll]"><a
-			href="../goods/catelog/1" class="index"> <em>最新发布</em>
+			href="../goods/catelog/0" class="index"> <em>最新发布</em>
 		</a></li>
 		<li ng-class="{true: 'active'}[isDigital]"><a
 			href="../goods/catelog/1" class="digital"> <em>闲置数码</em>
@@ -263,20 +263,21 @@
 -->
 	<div class="main-content">
 		<!--
-        作者：hlk_1135@outlook.com
-        时间：2017-05-05
+
         描述：轮播
     -->
 		<div class="slider-wapper">
 			<div class="content">
 				<div class="slide" id="slide">
 					<div class="img-div">
-						<img src="<%=basePath%>img/l2.jpg" /> <img
-							src="<%=basePath%>img/l1.jpg" /> <img
-							src="<%=basePath%>img/l3.jpg" />
+						<img src="<%=basePath%>img/l1.jpg"/>
+						<img src="<%=basePath%>img/l2.jpg" /> 
+						<img src="<%=basePath%>img/l3.png" />
 					</div>
 					<div class="slide-btn">
-						<a href="#" class="hover">●</a> <a href="#">●</a> <a href="#">●</a>
+						<a href="<%=basePath%>goods/goodsId/9">●</a>
+						<a href="<%=basePath%>goods/goodsId/10">●</a>
+						<a href="<%=basePath%>goods/goodsId/11">●</a>
 					</div>
 				</div>
 			</div>
