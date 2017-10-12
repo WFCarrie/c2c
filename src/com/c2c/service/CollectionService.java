@@ -29,4 +29,6 @@ public interface CollectionService {
 	 * @return
 	 */
 	public List<Collection> scList(Integer user_id);
+	
+	public int deleteCollectionGoods(Integer goodsId);
 }

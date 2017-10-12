@@ -29,7 +29,15 @@ import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.c2c.service.GoodsService;
-
+/**
+ * 商品类
+ * <p>Title:GoodsController</p>
+ * <p>Description:商品类</p>
+ * <p>Company:com.c2c</p>
+ * @author Muling
+ * @date 2017年10月11日 下午4:03:06
+ * @version 1.0
+ */
 @Controller
 @RequestMapping(value = "/goods")
 public class GoodsController {
@@ -164,19 +172,6 @@ public class GoodsController {
         	CommentsExtend commentsExtend =new CommentsExtend();
             Comments comments=commentsList.get(i);
             name[i]=userService.getUserNameById(comments.getUserId());
-//            List<Reply> replyList =replyService.getReplyByCommentsId(comments.getId());
-//            String[] name1 = new String[commentsList.size()];
-//            List<ReplyExtend> replyExtends =new ArrayList<ReplyExtend>();
-//            for(int j = 0 ; j<replyList.size(); j++){
-//            	ReplyExtend replyExtend =new ReplyExtend();
-//            	Reply reply=replyList.get(j);
-//            	name1[j]=userService.getUserNameById(reply.getUserId());
-//            	replyExtend.setName1(name1[j]);
-//            	replyExtend.setReply(reply);
-//            	replyExtends.add(j,replyExtend);
-//            	
-//            }
-//            commentsExtend.setReplyExtends(replyExtends);
             commentsExtend.setName(name[i]);
             commentsExtend.setComments(comments);
             commentsAndUserName.add(i, commentsExtend);
@@ -344,4 +339,37 @@ public class GoodsController {
             return map;
         }
     }
+    
+    
+    @RequestMapping(value = "/goodStatus4", produces = { "application/json;charset=UTF-8" })
+	@ResponseBody
+	public String goodStatus4(HttpServletRequest request) {
+		String msg = "";
+		int goodsId=Integer.parseInt(request.getParameter("goodsId"));
+		int i =  goodsService.updateGoodsStatusBygoodsId("4", goodsId);
+		if (i > 0) {
+			msg = "true";
+		} else {
+			msg = "false";
+		}
+		return msg;
+	}
+    
+    @RequestMapping(value = "/goodStatus5", produces = { "application/json;charset=UTF-8" })
+   	@ResponseBody
+   	public String goodStatus5(HttpServletRequest request) {
+   		String msg = "";
+   		int goodsId=Integer.parseInt(request.getParameter("goodsId"));
+   		int i =  goodsService.updateGoodsStatusBygoodsId("5", goodsId);
+   		if (i > 0) {
+   			msg = "true";
+   		} else {
+   			msg = "false";
+   		}
+   		return msg;
+   	}
+
+    
+    
+
 }

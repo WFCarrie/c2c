@@ -12,5 +12,7 @@ public interface CollectionMapper {
 	
 	Collection selectSfsc(Integer user_id,Integer goods_id);
 	
+	int deleteCollectionGoods(Integer goodsId);
+	
 	
 }

@@ -81,5 +81,15 @@ public interface GoodsService {
 	 * @return
 	 */
 	public int getKeywordCountSh(String keyword);
+	
+	
+    /*
+     * 根据Goodsid更新GOOd状态为三，即已卖出
+     */
+	public int updateStatusBygoodsId(int id);
+	/*
+	 * 审核状态更改
+	 */
+	public int updateGoodsStatusBygoodsId(String good_status,int id);
 
 }

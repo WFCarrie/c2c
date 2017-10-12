@@ -14,7 +14,7 @@ import com.c2c.util.DateUtil;
 /**
  * 对商品的操作类（增删改查）
  * @ClassName 	GoodServiceImpl
- * @date		2017-5-9下午9:22:24
+ *
  */
 
 @Service("goodsService")
@@ -99,6 +99,16 @@ public class GoodsServiceImpl implements GoodsService {
 	public int getKeywordCountSh(String keyword) {
 		int i =goodsMapper.AllGoddsListCountSh(keyword);
 		return i;
+	}
+	
+	public int updateStatusBygoodsId(int id){
+		return goodsMapper.updateStatusBygoodsId(id);
+	}
+
+	@Override
+	public int updateGoodsStatusBygoodsId(String good_status, int id) {
+		
+		return goodsMapper.updateGoodsStatusBygoodsId(good_status, id);
 	}
 
 }

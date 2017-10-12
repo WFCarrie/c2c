@@ -107,5 +107,12 @@ public interface GoodsMapper {
      */
     List<Goods> AllGoddsListSh(String keyword, int currentPage, int pageSize);
     
+    /*
+     * 根据GOODid改GOODS_STATE状态为三
+     */
+    int  updateStatusBygoodsId(int id);
+    
     int  AllGoddsListCountSh(String keyword);
+    
+    int updateGoodsStatusBygoodsId(String good_status, int id);
 }

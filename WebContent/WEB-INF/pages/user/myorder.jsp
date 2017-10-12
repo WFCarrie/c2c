@@ -113,8 +113,15 @@
 										<td>${items.address[0].buyerPhone}</td>
 										<td>${items.address[0].buyerName}</td>
 										<td>${items.address[0].addressContent}</td>
-
-										<td>正在发货....</td>
+                                        <c:if test="${items.goods[0].good_status ==3}">
+										<td>卖家正在备货...</td>
+										</c:if>
+										<c:if test="${items.goods[0].good_status ==4}">
+										<td>卖家已经发货<a onclick="goodStatus5(${items.goodsId})">点击收货</a></td>
+										</c:if>
+										<c:if test="${items.goods[0].good_status ==5}">
+										<td>交易成功</td>
+										</c:if>
 									</tr>
 								</c:forEach>
 							</table>
@@ -124,5 +131,25 @@
 			</div>
 		</div>
 	</div>
+	<script type="text/javascript" src="<%=basePath%>js/jquery.js" ></script>
+<script type="text/javascript">
+
+function goodStatus5(goodsId){
+	
+	var goodsId=goodsId;
+	
+	$.post("../goods/goodStatus5", {
+		"goodsId" : goodsId
+	}, function(result) {
+		if(result){
+			alert("交易成功！");
+			window.location.reload(); 
+		}else{
+			alert("交易失败！");
+		}
+	});
+	
+}
+</script>
 </body>
 </html>
