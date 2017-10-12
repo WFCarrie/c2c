@@ -11,5 +11,9 @@ public interface AddressService {
 	List<Address> selectAddressByUserId(Integer id);
 
 	int deleteByPrimaryKey(Integer id);
+	
+	
+
+	List<Address> addressListReturn(Integer id);
 
 }

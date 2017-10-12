@@ -3,6 +3,7 @@ package com.c2c.dao;
 import java.util.List;
 
 import com.c2c.pojo.Address;
+import com.c2c.pojo.Goods;
 
 
 public interface AddressMapper {
@@ -19,4 +20,6 @@ public interface AddressMapper {
     int updateByPrimaryKey(Address record);
     
     public List<Address> selectAddressByUserId(Integer id);
+   
+    public List<Address> addressListReturn(Integer id);
 }

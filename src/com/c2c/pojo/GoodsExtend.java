@@ -6,6 +6,7 @@ import java.util.List;
 public class GoodsExtend {
     private Goods goods;
     private List<Image> images = new ArrayList<Image>();
+    private List<Address> address;
    
 
 
@@ -20,5 +21,11 @@ public class GoodsExtend {
 	}
 	public void setImages(List<Image> images) {
 		this.images = images;
+	}
+	public List<Address> getAddress() {
+		return address;
+	}
+	public void setAddress(List<Address> address) {
+		this.address = address;
 	}
 }

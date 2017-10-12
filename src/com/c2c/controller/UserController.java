@@ -232,8 +232,11 @@ public class UserController {
 			// 将用户信息和image信息封装到GoodsExtend类中，传给前台
 			GoodsExtend goodsExtend = new GoodsExtend();
 			Goods goods = goodsList.get(i);
-			List<Image> images = imageService.getImagesByGoodsPrimaryKey(goods
-					.getId());
+			List<Image> images = imageService.getImagesByGoodsPrimaryKey(goods.getId());
+			if(goods.getGood_status()==3){
+				List<Address> address =addressService.addressListReturn(goods.getId());
+				goodsExtend.setAddress(address);
+			}
 			goodsExtend.setGoods(goods);
 			goodsExtend.setImages(images);
 			goodsAndImage.add(i, goodsExtend);
