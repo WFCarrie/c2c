@@ -277,9 +277,12 @@
             <c:forEach var="item" items="${goodsExtendList}">
                 <div class="card col">
                     <a href="<%=basePath%>goods/goodsId/${item.goods.id}">
-                        <div class="card-image">
-                            <img src="<%=basePath%>upload/${item.images[0].imgUrl}" />
-                        </div>
+                       <div class="card-image"
+								style="background:url(../upload/${item.images[0].imgUrl});background-size: 280px 280px;background-repeat: no-repeat;">
+								<c:if test="${item.goods.good_status ==3}">
+									<img src="../img/c2c.png">
+								</c:if>
+							</div>
                         <div class="card-content item-price"><c:out value="${item.goods.price}"></c:out></div>
                         <div class="card-content item-name">
                             <p><c:out value="${item.goods.name}"></c:out></p>

@@ -135,9 +135,9 @@ function usubmit(action){//获取radio的value的方法
 					<div class="address1">
 						<p>
 							<label> <input id="radio1" name="radio1" type="radio" value="${items.id}" />${items.addressContent }
-								（${items.buyerName} 收）电话：${items.buyerPhone}
-							</label> <a data-toggle="modal" onclick="updateAddr()">修改本地址</a>
-							
+								（${items.buyerName} 收）电话：${items.buyerPhone}</label>
+<!-- 							 <a data-toggle="modal" onclick="updateAddr()">修改本地址</a> -->
+							<a onclick="deleteAddress(${items.id})">删除本地址</a>
 						</p>
 					</div>
 					</c:forEach>
@@ -188,37 +188,37 @@ function usubmit(action){//获取radio的value的方法
 
 	<!-- 修改地址-->
 
-	<div id="addr-update" class="container">
-		<div class="check-out">
-			<h2 class="page-header">修改地址</h2>
+<!-- 	<div id="addr-update" class="container"> -->
+<!-- 		<div class="check-out"> -->
+<!-- 			<h2 class="page-header">修改地址</h2> -->
 			
-			<form class="form-inline" action="">
-				<div id="distpicker">
-					<div style="float: left; font-size: 15px;">所&nbsp;在&nbsp;地&nbsp;区：</div>
-					<div class="form-group">
-						<div style="position: relative;">
-							<input id="city-picker3" class="form-control" readonly
-								type="text" value="请选择" data-toggle="city-picker">
-						</div>
-					</div>
-				</div>
-				<div class="adr">
-					<div class="adr1">详&nbsp;细&nbsp;地&nbsp;址：</div>
-					<textarea rows="3" cols="40"
-						style="width: 230px; background-color: white; border: 1px solid; border-color: gainsboro;"></textarea>
-				</div>
-				<div class="aname">
-					收货人姓名：<input type="text" />
-				</div>
-				<div class="phone">
-					电&nbsp;话&nbsp;号&nbsp;码：<input type="text" />
-				</div>
-				<div class="baocun">
-					 <a href="#" class=" to-buy" onclick = "">保存</a>
-				</div>
-			</form>
-		</div>
-	</div>
+<%-- 			<form class="form-inline" action=""> --%>
+<!-- 				<div id="distpicker"> -->
+<!-- 					<div style="float: left; font-size: 15px;">所&nbsp;在&nbsp;地&nbsp;区：</div> -->
+<!-- 					<div class="form-group"> -->
+<!-- 						<div style="position: relative;"> -->
+<!-- 							<input id="city-picker3" class="form-control" readonly -->
+<!-- 								type="text" value="请选择" data-toggle="city-picker"> -->
+<!-- 						</div> -->
+<!-- 					</div> -->
+<!-- 				</div> -->
+<!-- 				<div class="adr"> -->
+<!-- 					<div class="adr1">详&nbsp;细&nbsp;地&nbsp;址：</div> -->
+<!-- 					<textarea rows="3" cols="40" -->
+<!-- 						style="width: 230px; background-color: white; border: 1px solid; border-color: gainsboro;"></textarea> -->
+<!-- 				</div> -->
+<!-- 				<div class="aname"> -->
+<!-- 					收货人姓名：<input type="text" /> -->
+<!-- 				</div> -->
+<!-- 				<div class="phone"> -->
+<!-- 					电&nbsp;话&nbsp;号&nbsp;码：<input type="text" /> -->
+<!-- 				</div> -->
+<!-- 				<div class="baocun"> -->
+<!-- 					 <a href="#" class=" to-buy" onclick = "">保存</a> -->
+<!-- 				</div> -->
+<%-- 			</form> --%>
+<!-- 		</div> -->
+<!-- 	</div> -->
 	<!-- 修改结束 -->
 
 	<!--订单信息-->
@@ -257,6 +257,21 @@ function usubmit(action){//获取radio的value的方法
 	<script src="<%=basePath%>js/main.js"></script>
 
 	<script type="text/javascript">
+	
+	function deleteAddress(addressId){
+		$.post("<%=basePath%>address/deleted", {
+			"addressId" : addressId
+		}, function(result) {
+			if(result){
+				alert("删除成功！");
+				window.location.reload(); 
+			}else{
+				alert("删除失败！");
+			}
+		});
+	}
+	
+	
 	
 	function saveAddress(){
 		var buyerName = $("#buyerName").val().trim();
