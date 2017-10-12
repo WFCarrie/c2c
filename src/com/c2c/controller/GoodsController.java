@@ -172,19 +172,6 @@ public class GoodsController {
         	CommentsExtend commentsExtend =new CommentsExtend();
             Comments comments=commentsList.get(i);
             name[i]=userService.getUserNameById(comments.getUserId());
-//            List<Reply> replyList =replyService.getReplyByCommentsId(comments.getId());
-//            String[] name1 = new String[commentsList.size()];
-//            List<ReplyExtend> replyExtends =new ArrayList<ReplyExtend>();
-//            for(int j = 0 ; j<replyList.size(); j++){
-//            	ReplyExtend replyExtend =new ReplyExtend();
-//            	Reply reply=replyList.get(j);
-//            	name1[j]=userService.getUserNameById(reply.getUserId());
-//            	replyExtend.setName1(name1[j]);
-//            	replyExtend.setReply(reply);
-//            	replyExtends.add(j,replyExtend);
-//            	
-//            }
-//            commentsExtend.setReplyExtends(replyExtends);
             commentsExtend.setName(name[i]);
             commentsExtend.setComments(comments);
             commentsAndUserName.add(i, commentsExtend);
@@ -352,6 +339,9 @@ public class GoodsController {
             return map;
         }
     }
+    
+
+    
     
 
 }
